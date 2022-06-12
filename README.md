@@ -22,3 +22,8 @@ Tópicos:
     21:20 - organizando os arquivos utilizando package by component    
     23:10 - visão geral da arquitetura
 
+Objetivos de um padrão de arquitetura:
+  1. ter um modelo mental de como padronizar o projeto. Trazer o modelo mental para um modelo digital da computação
+  2. facilitar as mudanças de negócios
+  3. previnir que mudanças de `"infraestrutura"` (banco de dados, frameworks, meios de comunicação como http e GRPC, libs e etc) afetem/minimizem as mudanças no negócio; evitar mudanças de agentes externos comprometam ao negócio
+
