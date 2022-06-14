@@ -1,12 +1,14 @@
 # zupedu-introducao-arquitetura-hexagonal
 Treinamento da Zup Edu sobre a Introdução a Arquitetura Hexagonal
 
-## Aprenda a criar um cadastro utilizando a Arquitetura Hexagonal
+## 1. Começando com a Arquitetura Hexagonal
+### 1.1 Aprenda a criar um cadastro utilizando a Arquitetura Hexagonal
 - Vídeo: [S01] Implementando um cadastro de autores com Arquitetura Hexagonal - Conteúdo Técnico
 
-### Revisão das teorias
-#### 1. MVC e Arquitetura em Camadas
-**Vídeo: [S01] MVC e Arquitetura em Camadas - Conteúdo Técnico**
+### Teorias
+**1. MVC e Arquitetura em Camadas**
+
+- Vídeo: [S01] MVC e Arquitetura em Camadas - Conteúdo Técnico
 
 Tópicos:
 
