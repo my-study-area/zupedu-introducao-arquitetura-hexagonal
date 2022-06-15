@@ -33,3 +33,24 @@ Ao se falar de arquitetura de software é interessante ter em mente a diferença
 
 ![Imagem com fundo branco exibindo o fluxo de dependência entre a view, controller e model representados com um retângulo, conectados por setas que representam a dependência na sequência de view depende do controller e o controller depende do model](./img/arquitetura-mvc.png)
 
+Ainda pensando na arquitetura MVC é possível organizar os componentes `model`, `view` e `controller` usando pacotes e pastas como o `Package by layer`, `Package by feature` e `Package by component` utilizando a mesma arquitetura, no caso, MVC.
+
+
+Observe o `Package by layer` com uma representação de fatias horizontais, conforme a imagem abaixo:
+
+![Imagem com fundo branco exibindo a organização de pacotes/pastas utilizando o Package by layer](./img/package-by-layer.png)
+
+
+Agora o observe o `Package by feature` com uma representação de pasta/pacotes com fatias verticais:
+
+![Imagem com fundo branco exibindo a organização de pacotes/pastas utilizando o Package by feature](./img/package-by-feature.png)
+
+Agora um exemplo do `Package by component`:
+
+![Imagem com fundo branco exibindo a organização de pacotes/pastas utilizando o Package by component](./img/package-by-component.png)
+
+  - Links:    
+    - [MVC XEROX PARC 1978-79](https://folk.universitetetioslo.no/trygver/themes/mvc/mvc-index.html)
+    - [Package by component and architecturally-aligned testing](http://www.codingthearchitecture.com/2015/03/08/package_by_component_and_architecturally_aligned_testing.html)
+    - [c4 Model - Simon Brown](https://c4model.com/)
+
