@@ -54,3 +54,30 @@ Agora um exemplo do `Package by component`:
     - [Package by component and architecturally-aligned testing](http://www.codingthearchitecture.com/2015/03/08/package_by_component_and_architecturally_aligned_testing.html)
     - [c4 Model - Simon Brown](https://c4model.com/)
 
+**2. Introdução sobre Arquitetura Hexagonal**
+- Video: Introdução sobre Arquitetura Hexagonal
+
+Tópicos
+```
+02:50 Motivação 
+07:03 Entendendo hexagonal vs portas e adaptadores
+16:42 Desenho da arquitetura hexagonal
+```
+
+**Motivação:**
+
+Os problemas das lógicas de negócios junto com os códigos de interface do usuário (camada de visualização)
+- difícil de ser testada de forma isolada em aplicações que tem a lógica de negócio embutida na camada de visualização
+- pela mesma razão é difícil trocar a interface com o usuário, por exemplo, mudando de uma interface web para uma api, smartphone, sistema batch ou até nos casos de troca de protocolos de comunicação como HTTP para GRPC
+- pela mesma razão se torna difícil a troca de `"infraestrutura"` da aplicação como a troca de banco de dados, frameworks e bibliotecas
+
+**Conceito de portas e adaptadores**
+
+- as portas são as nossas interfaces, por exemplo, podemos ter uma porta de `notificação` e uma porta de `banco de dados`
+- os adaptadores são as classes que implementam as nossas portas; podemos ter diversos adaptadores de uma mesma porta, por exemplo, podemos ter um adaptador para o `postgres`, outro para o `mysql` e outro para um `mock` e todos implementam a porta `banco de dados`
+
+Podemos utilizar os diversos tipos de organização de pacotes na implementação da Arquitetura Hexagonal.
+
+Links:
+- [Hexagonal architecture](https://alistair.cockburn.us/hexagonal-architecture/)
+
