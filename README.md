@@ -81,3 +81,13 @@ Podemos utilizar os diversos tipos de organização de pacotes na implementaçã
 Links:
 - [Hexagonal architecture](https://alistair.cockburn.us/hexagonal-architecture/)
 
+**3. Criando um projeto Java seguindo a arquitetura hexagonal**
+- Vídeo: Criando um Projeto Java seguindo a Arquitetura Hexagonal - Conteúdo Técnico
+
+## Links
+- [MVC XEROX PARC 1978-79](https://folk.universitetetioslo.no/trygver/themes/mvc/mvc-index.html)
+- [Package by component and architecturally-aligned testing](http://www.codingthearchitecture.com/2015/03/08/package_by_component_and_architecturally_aligned_testing.html)
+- [c4 Model - Simon Brown](https://c4model.com/)
+- [Excalidraw](https://excalidraw.com/)
+- [Hexagonal architecture](https://alistair.cockburn.us/hexagonal-architecture/)
+- [Link do código gerado no vídeo](https://github.com/zup-academy/livraria/tree/hexagonal-tc1-lt1/src/main/java/com/zupedu/livraria)
