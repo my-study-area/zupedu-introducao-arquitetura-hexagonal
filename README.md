@@ -84,6 +84,14 @@ Links:
 **3. Criando um projeto Java seguindo a arquitetura hexagonal**
 - Vídeo: Criando um Projeto Java seguindo a Arquitetura Hexagonal - Conteúdo Técnico
 
+### Aprenda a criar um cadastro utilizando a Arquitetura Hexagonal
+- Vídeo: Implementando um cadastro de autores com Arquitetura Hexagonal - Conteúdo Técnico
+- [Link do código gerado no vídeo](https://github.com/zup-academy/livraria/tree/hexagonal-tc1-lt1/src/main/java/com/zupedu/livraria)
+
+Diagrama de sequência do projeto livraria
+
+![bancodigital](./img/diagrama-sequencia-livraria.png)
+
 ## Links
 - [MVC XEROX PARC 1978-79](https://folk.universitetetioslo.no/trygver/themes/mvc/mvc-index.html)
 - [Package by component and architecturally-aligned testing](http://www.codingthearchitecture.com/2015/03/08/package_by_component_and_architecturally_aligned_testing.html)
