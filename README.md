@@ -92,10 +92,30 @@ Diagrama de sequência do projeto livraria
 
 ![bancodigital](./img/diagrama-sequencia-livraria.png)
 
+**Questionário**
+
+A arquitetura em camadas é uma forma de organização de arquivos em um projeto?
+
+`R:` Sim,  Arquitetura em camadas é uma forma de organização de arquivos em um projeto de software.
+Caso você queira continuar aprendendo mais sobre o assunto recomendamos a leitura do artigo: "[Layered Architecture" da Baeldung](https://www.baeldung.com/cs/layered-architecture)".
+
+A arquitetura em camadas define um modelo de dependência entre as camadas. Assim, as camadas mais externas podem depender das camadas internas, mas a camada interna não pode depender da externa
+
+`R:` Sim, caso você queira continuar aprendendo mais sobre o assunto, recomendamos o post "[The Pattern: Ports and Adapters ("Object Structural")](https://alistair.cockburn.us/hexagonal-architecture/)" do Alistair Cockburn
+
+Na Arquitetura Hexagonal, podemos ter apenas 6 portas e 6 adaptadores
+
+`R:` Não, Caso você queira continuar aprendendo mais sobre o assunto recomendamos. Além do post sobre Arquitetura Hexagonal do Cockburn, recomendamos olhar o conceito de DIP do SOLID.
+
+
+**Recomendações:**
+
+Caso você queira continuar aprendendo mais sobre o assunto recomendamos a leitura do artigo do Alistair Cockburn e revisitar o conceito de DIP do SOLID. Além disso, pensando em linguagens orientadas a objetos, estudar polimorfismo ajuda na compreensão desses tipos arquiteturais.
 ## Links
 - [MVC XEROX PARC 1978-79](https://folk.universitetetioslo.no/trygver/themes/mvc/mvc-index.html)
 - [Package by component and architecturally-aligned testing](http://www.codingthearchitecture.com/2015/03/08/package_by_component_and_architecturally_aligned_testing.html)
 - [c4 Model - Simon Brown](https://c4model.com/)
 - [Excalidraw](https://excalidraw.com/)
 - [Hexagonal architecture](https://alistair.cockburn.us/hexagonal-architecture/)
-- [Link do código gerado no vídeo](https://github.com/zup-academy/livraria/tree/hexagonal-tc1-lt1/src/main/java/com/zupedu/livraria)
+- [Link do código gerado no vídeo Implementando um cadastro de autores com Arquitetura Hexagonal - Conteúdo Técnico](https://github.com/zup-academy/livraria/tree/hexagonal-tc1-lt1/src/main/java/com/zupedu/livraria)
+- [Layered Architecture" da Baeldung](https://www.baeldung.com/cs/layered-architecture)
