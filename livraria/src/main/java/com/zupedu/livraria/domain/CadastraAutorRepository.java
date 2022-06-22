@@ -1,4 +1,4 @@
-package com.zupedu.bancodigital.domain;
+package com.zupedu.livraria.domain;
 
 public interface CadastraAutorRepository {
     Autor salva(Autor autor);

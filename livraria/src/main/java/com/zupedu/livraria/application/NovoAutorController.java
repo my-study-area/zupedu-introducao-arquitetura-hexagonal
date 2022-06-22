@@ -1,6 +1,6 @@
-package com.zupedu.bancodigital.application;
+package com.zupedu.livraria.application;
 
-import com.zupedu.bancodigital.domain.CriaNovoAutorService;
+import com.zupedu.livraria.domain.CriaNovoAutorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

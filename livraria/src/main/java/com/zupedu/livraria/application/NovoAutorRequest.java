@@ -1,7 +1,7 @@
-package com.zupedu.bancodigital.application;
+package com.zupedu.livraria.application;
 
-import com.zupedu.bancodigital.domain.Autor;
-import com.zupedu.bancodigital.domain.DadosNovoAutor;
+import com.zupedu.livraria.domain.Autor;
+import com.zupedu.livraria.domain.DadosNovoAutor;
 
 public class NovoAutorRequest implements DadosNovoAutor {
     private String nome;

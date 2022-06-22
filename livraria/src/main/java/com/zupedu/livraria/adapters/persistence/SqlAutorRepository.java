@@ -1,7 +1,7 @@
-package com.zupedu.bancodigital.adapters.persistence;
+package com.zupedu.livraria.adapters.persistence;
 
-import com.zupedu.bancodigital.domain.Autor;
-import com.zupedu.bancodigital.domain.CadastraAutorRepository;
+import com.zupedu.livraria.domain.Autor;
+import com.zupedu.livraria.domain.CadastraAutorRepository;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,10 +1,10 @@
-package com.zupedu.bancodigital;
+package com.zupedu.livraria;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BancodigitalApplicationTests {
+class LivrariaApplicationTests {
 
 	@Test
 	void contextLoads() {
