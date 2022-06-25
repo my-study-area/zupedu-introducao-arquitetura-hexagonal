@@ -1,0 +1,11 @@
+create table proposta (
+    id bigint,
+    cpf varchar(255),
+    email varchar(255),
+    cep varchar(255),
+    complemento varchar(255),
+    logradouro varchar(255),
+    numero varchar(255),
+    nome_completo varchar(255),
+    primary key (id)
+);
