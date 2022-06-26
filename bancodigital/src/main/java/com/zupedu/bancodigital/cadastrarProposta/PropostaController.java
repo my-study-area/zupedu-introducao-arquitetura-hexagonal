@@ -2,9 +2,12 @@ package com.zupedu.bancodigital.cadastrarProposta;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/propostas")
@@ -16,7 +19,8 @@ public class PropostaController {
     }
 
     @PostMapping
-    public ResponseEntity<?> cadastrar(NovaPropostaRequest novaPropostaRequest, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<?> cadastrar(@RequestBody @Valid NovaPropostaRequest novaPropostaRequest,
+                                       UriComponentsBuilder uriBuilder) {
         var proposta = novaPropostaRequest.toModel();
         repository.cadastrar(proposta);
         var uri = uriBuilder.path("/propostas/{id}").buildAndExpand(proposta.getId()).toUri();
