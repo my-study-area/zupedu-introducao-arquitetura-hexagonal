@@ -15,14 +15,20 @@ public class Endereco {
     private String numero;
     private String complemento;
 
-    public Endereco(String cep, String logradouro, String numero, String complemento) {
+    /**
+     * Uso exclusivo do framework
+     */
+    @Deprecated
+    public Endereco() { }
+
+    public Endereco(@NotBlank String cep,
+                    @NotBlank String logradouro,
+                    @NotBlank String numero,
+                    String complemento) {
         this.cep = cep;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
-    }
-
-    public Endereco() {
     }
 
     public String getCep() {
