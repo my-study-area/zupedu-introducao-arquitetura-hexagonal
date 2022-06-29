@@ -12,17 +12,17 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/propostas")
 public class PropostaController {
-    private BancoDeDadosRepositoryPort repository;
+    private PropostaService service;
 
-    public PropostaController(BancoDeDadosRepositoryPort repository) {
-        this.repository = repository;
+    public PropostaController(PropostaService service) {
+        this.service = service;
     }
 
     @PostMapping
     public ResponseEntity<?> cadastrar(@RequestBody @Valid NovaPropostaRequestAdapter novaPropostaRequest,
                                        UriComponentsBuilder uriBuilder) {
         var proposta = novaPropostaRequest.toModel();
-        repository.cadastrar(proposta);
+        service.cadastrar(proposta);
         var uri = uriBuilder.path("/propostas/{id}").buildAndExpand(proposta.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
