@@ -1,21 +1,38 @@
 package com.zupedu.bancodigital.cadastrarProposta;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.validator.constraints.br.CPF;
+
+import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Proposta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nomeCompleto;
-    private String cpf;
-    private String email;
-    private Endereco endereco;
 
-    public Proposta(String nomeCompleto, String cpf, String email, Endereco endereco) {
+    @NotBlank
+    private String nomeCompleto;
+
+    @NotBlank
+    @CPF
+    private String cpf;
+
+    @NotBlank
+    @Email
+    private String email;
+
+    @Embedded
+    private @Valid @NotNull Endereco endereco;
+
+    public Proposta(@NotBlank String nomeCompleto,
+                    @NotBlank @CPF String cpf,
+                    @NotBlank @Email String email,
+                    @Valid @NotNull Endereco endereco) {
+        this.id = id;
         this.nomeCompleto = nomeCompleto;
         this.cpf = cpf;
         this.email = email;
