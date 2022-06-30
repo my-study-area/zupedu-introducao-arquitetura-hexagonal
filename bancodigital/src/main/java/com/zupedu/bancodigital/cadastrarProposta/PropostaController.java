@@ -19,7 +19,7 @@ public class PropostaController {
     }
 
     @PostMapping
-    public ResponseEntity<?> cadastrar(@RequestBody @Valid NovaPropostaRequestAdapter novaPropostaRequest,
+    public ResponseEntity<?> cadastrar(@RequestBody @Valid NovaPropostaInputPort novaPropostaRequest,
                                        UriComponentsBuilder uriBuilder) {
         var proposta = novaPropostaRequest.toModel();
         service.cadastrar(proposta);
