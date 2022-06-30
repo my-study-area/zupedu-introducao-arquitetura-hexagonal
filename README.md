@@ -111,6 +111,34 @@ Na Arquitetura Hexagonal, podemos ter apenas 6 portas e 6 adaptadores
 **Recomendações:**
 
 Caso você queira continuar aprendendo mais sobre o assunto recomendamos a leitura do artigo do Alistair Cockburn e revisitar o conceito de DIP do SOLID. Além disso, pensando em linguagens orientadas a objetos, estudar polimorfismo ajuda na compreensão desses tipos arquiteturais.
+
+### Atividades obrigatórias
+
+#### **Implemente o cadastro de interesse para a abertura de uma conta digital**
+
+Implemente o cadastro da nova Proposta para abertura da conta seguindo as restrições a seguir:
+
+Quando uma pessoa tem o interesse em abrir uma conta digital, ela envia uma proposta contendo algumas informações pessoais.
+- Baixe ou clone este repositório com o [projeto do banco digital](https://github.com/zup-academy/bancodigital)
+- Deve-se informar o nome completo;
+- É necessário informar um CPF;
+- É preciso infomar um email que esteja em um formato válido
+- A pessoa deve que informar um endereço contendo o CEP, o logradouro, número e um complemento, caso exista.
+- Para sua API REST:
+  - Se o cadastro ocorrer com sucesso, deve-se retornar o status HTTP 201;
+  - Se existe algum erro de validação, deve-se retornar o status HTTP 400;
+
+- [Minha resposta](https://gist.github.com/adrianoavelinozup/d53345e1e262324674947847650682fe)
+- [Resposta do especialista](https://gist.github.com/yurioliveirazup/30cf9af1417a320e43dab1330dc40123#file-novapropostacontroller-java)
+
+É interessante que você revise os conteúdos vistos durante este programação de formação e caso você queira continuar aprendendo mais sobre o assunto recomendamos a leitura do artigo de arquitetura hexagonal do Cockburn e revisitar os conceitos de SOLID. Principalmente sobre o DIP (Princípio de Inversão de Dependência)
+
+Caso você queira continuar aprendendo mais sobre o assunto recomendamos a revisão do artigo de arquitetura hexagonal do Cockburn e revisitar os conceitos de SOLID. Além disso, olhar os posts do Bob Martin sobre SOLID e sobre arquitetura limpa (Clean Architecture) principalmente na parte que é citado sobre a regra de dependência pode ampliar os seus horizontes.
+
+Diagrama de sequência da abertura de uma conta digital desenvolvida na atividade:
+
+![Diagrama de sequência da abertura de uma conta digital desenvolvida na atividade](./img/cadastrar-abertura-conta-digital.png)
+
 ## Links
 - [MVC XEROX PARC 1978-79](https://folk.universitetetioslo.no/trygver/themes/mvc/mvc-index.html)
 - [Package by component and architecturally-aligned testing](http://www.codingthearchitecture.com/2015/03/08/package_by_component_and_architecturally_aligned_testing.html)
