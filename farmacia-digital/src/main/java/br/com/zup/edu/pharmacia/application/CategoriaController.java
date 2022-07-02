@@ -26,7 +26,6 @@ public class CategoriaController {
         var categoria = request.toModel();
         repository.cadastrar(categoria);
         var uri = uriBuilder.path("/categorias/{id}").buildAndExpand(categoria.getId()).toUri();
-//        var uri = uriBuilder.path("/categorias/{id}").buildAndExpand("1zzz").toUri();
         return ResponseEntity.created(uri).build();
     }
 
