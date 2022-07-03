@@ -15,10 +15,10 @@ import java.net.URI;
 @RestController
 @RequestMapping("/remedios")
 public class RemedioController {
-    private final CadastraRemedioRepository service;
+    private final CadastraRemedioService service;
     private final CategoriaService categoriaService;
 
-    public RemedioController(CadastraRemedioRepository service, CategoriaService categoriaService) {
+    public RemedioController(CadastraRemedioService service, CategoriaService categoriaService) {
         this.service = service;
         this.categoriaService = categoriaService;
     }
