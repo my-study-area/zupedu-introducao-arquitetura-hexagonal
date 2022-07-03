@@ -1,17 +1,16 @@
 package br.com.zup.edu.pharmacia.domain;
 
-import br.com.zup.edu.pharmacia.adapters.RemedioRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CadastraRemedioService {
-    private final RemedioRepository repository;
+    private final RemedioRepositoryOutputPort repository;
 
-    public CadastraRemedioService(RemedioRepository repository) {
+    public CadastraRemedioService(RemedioRepositoryOutputPort repository) {
         this.repository = repository;
     }
 
     public void cadastrar(Remedio remedio) {
-        repository.save(remedio) ;
+        repository.cadastrar(remedio); ;
     }
 }

@@ -15,11 +15,11 @@ import java.net.URI;
 @RestController
 @RequestMapping("/remedios")
 public class RemedioController {
-    private final CadastraRemedioService service;
+    private final RemedioRepositoryOutputPort remedioRepository;
     private final CategoriaService categoriaService;
 
-    public RemedioController(CadastraRemedioService service, CategoriaService categoriaService) {
-        this.service = service;
+    public RemedioController(RemedioRepositoryOutputPort remedioRepository, CategoriaService categoriaService) {
+        this.remedioRepository = remedioRepository;
         this.categoriaService = categoriaService;
     }
 
@@ -27,7 +27,7 @@ public class RemedioController {
     public ResponseEntity<?> cadastrar(@RequestBody @Valid RemedioRequest request,
                                        UriComponentsBuilder uriBuilder) throws Exception {
         Remedio remedio = request.toModel(categoriaService);
-        service.cadastrar(remedio);
+        remedioRepository.cadastrar(remedio);
         URI uri = uriBuilder.path("/remedios/{id}").buildAndExpand(remedio.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
