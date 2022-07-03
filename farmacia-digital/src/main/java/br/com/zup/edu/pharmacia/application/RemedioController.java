@@ -1,6 +1,6 @@
 package br.com.zup.edu.pharmacia.application;
 
-import br.com.zup.edu.pharmacia.adapters.RemedioRequest;
+import br.com.zup.edu.pharmacia.adapters.RemedioRequestInputAdapter;
 import br.com.zup.edu.pharmacia.domain.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +24,7 @@ public class RemedioController {
     }
 
     @PostMapping
-    public ResponseEntity<?> cadastrar(@RequestBody @Valid RemedioRequest request,
+    public ResponseEntity<?> cadastrar(@RequestBody @Valid RemedioRequestInputAdapter request,
                                        UriComponentsBuilder uriBuilder) throws Exception {
         Categoria categoria = categoriaService.buscarPorId(request.getCategoriaId());
         Remedio remedio = request.toModel(categoria);

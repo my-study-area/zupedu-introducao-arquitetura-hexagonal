@@ -1,6 +1,6 @@
 package br.com.zup.edu.pharmacia.application;
 
-import br.com.zup.edu.pharmacia.adapters.CategoriaRequestAdapter;
+import br.com.zup.edu.pharmacia.adapters.CategoriaRequestInputAdapter;
 import br.com.zup.edu.pharmacia.domain.CategoriaRepositoryOutputPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +22,7 @@ public class CategoriaController {
     }
 
     @PostMapping
-    public ResponseEntity<?> cadastrar(@Valid @RequestBody CategoriaRequestAdapter request, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody CategoriaRequestInputAdapter request, UriComponentsBuilder uriBuilder) {
         var categoria = request.toModel();
         repository.cadastrar(categoria);
         var uri = uriBuilder.path("/categorias/{id}").buildAndExpand(categoria.getId()).toUri();

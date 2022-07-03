@@ -7,14 +7,14 @@ import org.springframework.stereotype.Component;
 import javax.validation.constraints.NotBlank;
 
 @Component
-public class CategoriaRequestAdapter implements CategoriaRequestInputPort {
+public class CategoriaRequestInputAdapter implements CategoriaRequestInputPort {
     @NotBlank
     private String nome;
 
-    public CategoriaRequestAdapter() {
+    public CategoriaRequestInputAdapter() {
     }
 
-    public CategoriaRequestAdapter(@NotBlank String nome) {
+    public CategoriaRequestInputAdapter(@NotBlank String nome) {
         this.nome = nome;
     }
 
