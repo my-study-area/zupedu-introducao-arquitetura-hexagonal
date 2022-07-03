@@ -4,10 +4,10 @@ import br.com.zup.edu.pharmacia.adapters.RemedioRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RemedioService {
+public class CadastraRemedioRepository {
     private final RemedioRepository repository;
 
-    public RemedioService(RemedioRepository repository) {
+    public CadastraRemedioRepository(RemedioRepository repository) {
         this.repository = repository;
     }
 

@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-public class RemedioRequestInputAdapter {
+public class RemedioRequest {
     @NotBlank
     private String nome;
 
@@ -24,11 +24,11 @@ public class RemedioRequestInputAdapter {
     @NotNull
     private LocalDate dataValidade;
 
-    public RemedioRequestInputAdapter(@NotBlank String nome,
-                                      @NotBlank String farmaceutica,
-                                      @NotNull Long categoriaId,
-                                      @NotNull LocalDate dataFabricacao,
-                                      @NotNull LocalDate dataValidade) {
+    public RemedioRequest(@NotBlank String nome,
+                          @NotBlank String farmaceutica,
+                          @NotNull Long categoriaId,
+                          @NotNull LocalDate dataFabricacao,
+                          @NotNull LocalDate dataValidade) {
         this.nome = nome;
         this.farmaceutica = farmaceutica;
         this.categoriaId = categoriaId;

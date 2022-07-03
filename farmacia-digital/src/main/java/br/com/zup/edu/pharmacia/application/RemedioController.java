@@ -1,6 +1,6 @@
 package br.com.zup.edu.pharmacia.application;
 
-import br.com.zup.edu.pharmacia.adapters.RemedioRequestInputAdapter;
+import br.com.zup.edu.pharmacia.adapters.RemedioRequest;
 import br.com.zup.edu.pharmacia.domain.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,16 +15,16 @@ import java.net.URI;
 @RestController
 @RequestMapping("/remedios")
 public class RemedioController {
-    private final RemedioService service;
+    private final CadastraRemedioRepository service;
     private final CategoriaService categoriaService;
 
-    public RemedioController(RemedioService service, CategoriaService categoriaService) {
+    public RemedioController(CadastraRemedioRepository service, CategoriaService categoriaService) {
         this.service = service;
         this.categoriaService = categoriaService;
     }
 
     @PostMapping
-    public ResponseEntity<?> cadastrar(@RequestBody @Valid RemedioRequestInputAdapter request,
+    public ResponseEntity<?> cadastrar(@RequestBody @Valid RemedioRequest request,
                                        UriComponentsBuilder uriBuilder) throws Exception {
         Remedio remedio = request.toModel(categoriaService);
         service.cadastrar(remedio);

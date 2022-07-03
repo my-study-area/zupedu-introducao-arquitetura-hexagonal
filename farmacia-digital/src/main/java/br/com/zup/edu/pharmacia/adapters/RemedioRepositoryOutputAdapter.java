@@ -5,10 +5,10 @@ import br.com.zup.edu.pharmacia.domain.RemedioRepositoryOutputPort;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CadastrarRemedioRepository implements RemedioRepositoryOutputPort {
+public class RemedioRepositoryOutputAdapter implements RemedioRepositoryOutputPort {
     private final RemedioRepository repository;
 
-    public CadastrarRemedioRepository(RemedioRepository repository) {
+    public RemedioRepositoryOutputAdapter(RemedioRepository repository) {
         this.repository = repository;
     }
 
