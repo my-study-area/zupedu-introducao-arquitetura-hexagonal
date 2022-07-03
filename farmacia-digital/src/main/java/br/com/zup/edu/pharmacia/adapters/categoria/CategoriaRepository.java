@@ -1,6 +1,6 @@
-package br.com.zup.edu.pharmacia.adapters;
+package br.com.zup.edu.pharmacia.adapters.categoria;
 
-import br.com.zup.edu.pharmacia.domain.Categoria;
+import br.com.zup.edu.pharmacia.domain.categoria.Categoria;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

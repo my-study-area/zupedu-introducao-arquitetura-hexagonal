@@ -1,7 +1,7 @@
 package br.com.zup.edu.pharmacia.application;
 
-import br.com.zup.edu.pharmacia.adapters.CategoriaRequestInputAdapter;
-import br.com.zup.edu.pharmacia.domain.CategoriaRepositoryOutputPort;
+import br.com.zup.edu.pharmacia.adapters.categoria.CategoriaRequestInputAdapter;
+import br.com.zup.edu.pharmacia.domain.categoria.CategoriaRepositoryOutputPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
