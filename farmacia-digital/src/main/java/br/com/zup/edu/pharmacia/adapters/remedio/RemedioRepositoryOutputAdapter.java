@@ -1,4 +1,4 @@
-package br.com.zup.edu.pharmacia.adapters;
+package br.com.zup.edu.pharmacia.adapters.remedio;
 
 import br.com.zup.edu.pharmacia.domain.remedio.Remedio;
 import br.com.zup.edu.pharmacia.domain.remedio.RemedioRepositoryOutputPort;

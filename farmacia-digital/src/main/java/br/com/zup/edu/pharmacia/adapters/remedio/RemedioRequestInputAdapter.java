@@ -1,4 +1,4 @@
-package br.com.zup.edu.pharmacia.adapters;
+package br.com.zup.edu.pharmacia.adapters.remedio;
 
 import br.com.zup.edu.pharmacia.domain.categoria.Categoria;
 import br.com.zup.edu.pharmacia.domain.remedio.Remedio;
