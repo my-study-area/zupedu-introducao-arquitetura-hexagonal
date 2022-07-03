@@ -3,12 +3,13 @@ package br.com.zup.edu.pharmacia.adapters;
 import br.com.zup.edu.pharmacia.domain.Categoria;
 import br.com.zup.edu.pharmacia.domain.CategoriaService;
 import br.com.zup.edu.pharmacia.domain.Remedio;
+import br.com.zup.edu.pharmacia.domain.RemedioRequestInputPort;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-public class RemedioRequest {
+public class RemedioRequest implements RemedioRequestInputPort {
     @NotBlank
     private String nome;
 
@@ -36,8 +37,12 @@ public class RemedioRequest {
         this.dataValidade = dataValidade;
     }
 
-    public Remedio toModel(CategoriaService categoriaService) throws Exception {
-        Categoria categoria = categoriaService.buscarPorId(this.categoriaId);
+    @Override
+    public Remedio toModel(Categoria categoria) {
         return new Remedio(nome, farmaceutica, categoria, dataFabricacao, dataValidade);
+    }
+
+    public Long getCategoriaId() {
+        return this.categoriaId;
     }
 }

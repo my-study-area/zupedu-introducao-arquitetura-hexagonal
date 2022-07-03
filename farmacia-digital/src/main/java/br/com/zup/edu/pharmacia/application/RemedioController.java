@@ -26,7 +26,8 @@ public class RemedioController {
     @PostMapping
     public ResponseEntity<?> cadastrar(@RequestBody @Valid RemedioRequest request,
                                        UriComponentsBuilder uriBuilder) throws Exception {
-        Remedio remedio = request.toModel(categoriaService);
+        Categoria categoria = categoriaService.buscarPorId(request.getCategoriaId());
+        Remedio remedio = request.toModel(categoria);
         remedioRepository.cadastrar(remedio);
         URI uri = uriBuilder.path("/remedios/{id}").buildAndExpand(remedio.getId()).toUri();
         return ResponseEntity.created(uri).build();
