@@ -3,10 +3,10 @@ package br.com.zup.edu.pharmacia.domain;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CadastraRemedioService {
+public class RemedioService {
     private final RemedioRepositoryOutputPort repository;
 
-    public CadastraRemedioService(RemedioRepositoryOutputPort repository) {
+    public RemedioService(RemedioRepositoryOutputPort repository) {
         this.repository = repository;
     }
 
