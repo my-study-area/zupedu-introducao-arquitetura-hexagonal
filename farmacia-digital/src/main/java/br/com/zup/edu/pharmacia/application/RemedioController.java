@@ -1,9 +1,10 @@
 package br.com.zup.edu.pharmacia.application;
 
 import br.com.zup.edu.pharmacia.adapters.RemedioRequestInputAdapter;
-import br.com.zup.edu.pharmacia.domain.*;
 import br.com.zup.edu.pharmacia.domain.categoria.Categoria;
 import br.com.zup.edu.pharmacia.domain.categoria.CategoriaService;
+import br.com.zup.edu.pharmacia.domain.remedio.Remedio;
+import br.com.zup.edu.pharmacia.domain.remedio.RemedioRepositoryOutputPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,4 +1,4 @@
-package br.com.zup.edu.pharmacia.domain;
+package br.com.zup.edu.pharmacia.domain.remedio;
 
 import org.springframework.stereotype.Service;
 

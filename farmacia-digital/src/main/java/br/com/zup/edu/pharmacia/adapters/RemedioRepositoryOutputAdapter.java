@@ -1,7 +1,7 @@
 package br.com.zup.edu.pharmacia.adapters;
 
-import br.com.zup.edu.pharmacia.domain.Remedio;
-import br.com.zup.edu.pharmacia.domain.RemedioRepositoryOutputPort;
+import br.com.zup.edu.pharmacia.domain.remedio.Remedio;
+import br.com.zup.edu.pharmacia.domain.remedio.RemedioRepositoryOutputPort;
 import org.springframework.stereotype.Component;
 
 @Component

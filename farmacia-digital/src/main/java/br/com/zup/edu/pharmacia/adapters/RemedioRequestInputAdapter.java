@@ -1,8 +1,8 @@
 package br.com.zup.edu.pharmacia.adapters;
 
 import br.com.zup.edu.pharmacia.domain.categoria.Categoria;
-import br.com.zup.edu.pharmacia.domain.Remedio;
-import br.com.zup.edu.pharmacia.domain.RemedioRequestInputPort;
+import br.com.zup.edu.pharmacia.domain.remedio.Remedio;
+import br.com.zup.edu.pharmacia.domain.remedio.RemedioRequestInputPort;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
