@@ -1,5 +1,7 @@
 package br.com.zup.edu.pharmacia.domain;
 
+import br.com.zup.edu.pharmacia.domain.categoria.Categoria;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

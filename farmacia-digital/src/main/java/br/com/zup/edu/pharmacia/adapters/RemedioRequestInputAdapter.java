@@ -1,7 +1,6 @@
 package br.com.zup.edu.pharmacia.adapters;
 
-import br.com.zup.edu.pharmacia.domain.Categoria;
-import br.com.zup.edu.pharmacia.domain.CategoriaService;
+import br.com.zup.edu.pharmacia.domain.categoria.Categoria;
 import br.com.zup.edu.pharmacia.domain.Remedio;
 import br.com.zup.edu.pharmacia.domain.RemedioRequestInputPort;
 
