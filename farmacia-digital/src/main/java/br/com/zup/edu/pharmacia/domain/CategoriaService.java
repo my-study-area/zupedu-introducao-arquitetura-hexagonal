@@ -4,9 +4,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CategoriaService {
-    private final BancoDeDadosOutputPort repository;
+    private final CategoriaRepositoryOutputPort repository;
 
-    public CategoriaService(BancoDeDadosOutputPort repository) {
+    public CategoriaService(CategoriaRepositoryOutputPort repository) {
         this.repository = repository;
     }
 

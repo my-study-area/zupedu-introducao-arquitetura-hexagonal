@@ -1,16 +1,16 @@
 package br.com.zup.edu.pharmacia.adapters;
 
-import br.com.zup.edu.pharmacia.domain.BancoDeDadosOutputPort;
+import br.com.zup.edu.pharmacia.domain.CategoriaRepositoryOutputPort;
 import br.com.zup.edu.pharmacia.domain.Categoria;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
 @Component
-public class H2OutputAdapter implements BancoDeDadosOutputPort {
+public class CategoriaRepositoryOutputAdapter implements CategoriaRepositoryOutputPort {
     private final CategoriaRepository repository;
 
-    public H2OutputAdapter(CategoriaRepository repository) {
+    public CategoriaRepositoryOutputAdapter(CategoriaRepository repository) {
         this.repository = repository;
     }
 

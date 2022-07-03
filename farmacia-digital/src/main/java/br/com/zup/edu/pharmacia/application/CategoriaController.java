@@ -1,7 +1,7 @@
 package br.com.zup.edu.pharmacia.application;
 
 import br.com.zup.edu.pharmacia.adapters.CategoriaRequestAdapter;
-import br.com.zup.edu.pharmacia.domain.BancoDeDadosOutputPort;
+import br.com.zup.edu.pharmacia.domain.CategoriaRepositoryOutputPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,9 +15,9 @@ import javax.validation.Valid;
 @RequestMapping("/categorias")
 public class CategoriaController {
 
-    private BancoDeDadosOutputPort repository;
+    private CategoriaRepositoryOutputPort repository;
 
-    public CategoriaController(BancoDeDadosOutputPort repository) {
+    public CategoriaController(CategoriaRepositoryOutputPort repository) {
         this.repository = repository;
     }
 
