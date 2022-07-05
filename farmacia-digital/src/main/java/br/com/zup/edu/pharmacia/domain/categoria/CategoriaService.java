@@ -10,8 +10,9 @@ public class CategoriaService {
         this.repository = repository;
     }
 
-    public void cadastrar (Categoria categoria) {
-        repository.cadastrar(categoria);
+    public Categoria cadastrar (CategoriaRequestInputPort categoriaRequest) {
+        Categoria categoria = categoriaRequest.toModel();
+        return repository.cadastrar(categoria);
     }
 
     public Categoria buscarPorId(Long categoriaId) throws Exception {

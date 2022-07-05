@@ -1,7 +1,8 @@
 package br.com.zup.edu.pharmacia.application;
 
 import br.com.zup.edu.pharmacia.adapters.categoria.CategoriaRequestInputAdapter;
-import br.com.zup.edu.pharmacia.domain.categoria.CategoriaRepositoryOutputPort;
+import br.com.zup.edu.pharmacia.domain.categoria.Categoria;
+import br.com.zup.edu.pharmacia.domain.categoria.CategoriaService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,16 +16,15 @@ import javax.validation.Valid;
 @RequestMapping("/categorias")
 public class CategoriaController {
 
-    private CategoriaRepositoryOutputPort repository;
+    private CategoriaService service;
 
-    public CategoriaController(CategoriaRepositoryOutputPort repository) {
-        this.repository = repository;
+    public CategoriaController(CategoriaService service) {
+        this.service = service;
     }
 
     @PostMapping
     public ResponseEntity<?> cadastrar(@Valid @RequestBody CategoriaRequestInputAdapter request, UriComponentsBuilder uriBuilder) {
-        var categoria = request.toModel();
-        repository.cadastrar(categoria);
+        Categoria categoria = service.cadastrar(request);
         var uri = uriBuilder.path("/categorias/{id}").buildAndExpand(categoria.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }

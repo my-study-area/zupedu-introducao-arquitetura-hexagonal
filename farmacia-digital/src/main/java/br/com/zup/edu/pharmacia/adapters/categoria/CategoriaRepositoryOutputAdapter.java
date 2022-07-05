@@ -15,8 +15,9 @@ public class CategoriaRepositoryOutputAdapter implements CategoriaRepositoryOutp
     }
 
     @Override
-    public void cadastrar(Categoria categoria) {
+    public Categoria cadastrar(Categoria categoria) {
         repository.save(categoria);
+        return categoria;
     }
 
     @Override
