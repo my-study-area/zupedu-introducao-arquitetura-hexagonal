@@ -11,6 +11,6 @@ public class RemedioService {
     }
 
     public void cadastrar(Remedio remedio) {
-        repository.cadastrar(remedio); ;
+        repository.cadastrar(remedio);
     }
 }

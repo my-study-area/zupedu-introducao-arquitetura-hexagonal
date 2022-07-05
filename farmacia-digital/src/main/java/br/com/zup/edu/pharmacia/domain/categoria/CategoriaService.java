@@ -15,10 +15,7 @@ public class CategoriaService {
     }
 
     public Categoria buscarPorId(Long categoriaId) throws Exception {
-        return repository.buscarPorId(categoriaId).orElseThrow(
-            () -> {
-                return new Exception("Não foi possível");
-            }
-        );
+        return repository.buscarPorId(categoriaId)
+                .orElseThrow(() -> new Exception("Não foi possível encontrar a categoria"));
     }
 }
