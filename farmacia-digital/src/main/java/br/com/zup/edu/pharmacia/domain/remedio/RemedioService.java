@@ -1,5 +1,6 @@
 package br.com.zup.edu.pharmacia.domain.remedio;
 
+import br.com.zup.edu.pharmacia.domain.categoria.Categoria;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,7 +11,9 @@ public class RemedioService {
         this.repository = repository;
     }
 
-    public void cadastrar(Remedio remedio) {
+    public Remedio cadastrar(RemedioRequestInputPort remedioRequest, Categoria categoria) {
+        Remedio remedio = remedioRequest.toModel(categoria);
         repository.cadastrar(remedio);
+        return remedio;
     }
 }
