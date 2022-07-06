@@ -139,6 +139,28 @@ Diagrama de sequência da abertura de uma conta digital desenvolvida na atividad
 
 ![Diagrama de sequência da abertura de uma conta digital desenvolvida na atividade](./img/cadastrar-abertura-conta-digital.png)
 
+#### **Implementando o cadastro de remédios para uma farmácia digital**
+Nessa atividade, vamos construir o cadastro de remédios em uma sistema para uma farmácia. Para isso, siga os passos a seguir:
+- Baixe ou clone este [repositório com o projeto da farmácia digital](https://github.com/zup-academy/farmacia-digital/);
+- Siga o README do projeto;
+- Implemente o cadastro de baseado nas informações a seguir.
+- Todo remédio tem um nome obrigatório
+- Todo remédio é fabricado por uma farmacêutica;
+- Todo remédio pertence a uma categoria (antibiótico, antipirético, analgésicos, entre outros)
+- Todo remédio deve conter uma data de fabricação
+- Todo remédio precisa ter uma data de validade
+- Para sua API REST:
+  - Se o cadastro ocorrer com sucesso, deve-se retornar o status HTTP 201;
+  - Se existe algum erro de validação, deve-se retornar o status HTTP 400;
+
+A implementação da atividade está disponível em [./farmacia-digital](./farmacia-digital)
+
+Cadastrar categoria de remédio:
+![Diagrama de sequência do cadastro de categorias dos remédios](./img/cadastrar-categoria-remedio.png)
+
+Cadastrar remédio:
+![Diagrama de sequência do cadastro de remédios](./img/cadastrar-remedio.png)
+
 ## Links
 - [MVC XEROX PARC 1978-79](https://folk.universitetetioslo.no/trygver/themes/mvc/mvc-index.html)
 - [Package by component and architecturally-aligned testing](http://www.codingthearchitecture.com/2015/03/08/package_by_component_and_architecturally_aligned_testing.html)
