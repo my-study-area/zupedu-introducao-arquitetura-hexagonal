@@ -161,6 +161,18 @@ Cadastrar categoria de remédio:
 Cadastrar remédio:
 ![Diagrama de sequência do cadastro de remédios](./img/cadastrar-remedio.png)
 
+**Respostas**
+
+Crio a classe controller anotada com `@RequestMapping` informando o path e `@RestController`. Adiciono o método cadastrar anotado com `@PostMapping` que recebe os dados da request anotado com `@Valid` e `@RequestBody` e um segundo parâmetro utilizando um `URIComponentBuilder`. No corpo do método, converto os dados de request numa classe de domínio, persisto no banco de dados utilizando um service que utiliza uma implementação de repository port, injetada via construtor, para armazenar as  informações no banco de dados. Retorno um `ReponseEntity` utilizando o método create, passando uma URI gerada utilizando o parâmetro do método, URIComponentBuilder, para gerar uma status 201 com o location.
+
+**Service**
+
+Crio um classe de service anotada com `@Service` e adiciono o método salvar que recebe uma classe de domínio como parâmetro. No corpo do método, utilizo um port de repository injetado via construtor para persistir no banco de dados.
+
+**Adaptador de persistência da aplicação**
+
+Crio uma classe anotada com @Component e que implementa a porta responsável pela persistência dos dados. Implemento os métodos necessários e utilizo um repository do Spring, injetado via construtor, para persistir os dados. 
+
 ## Links
 - [MVC XEROX PARC 1978-79](https://folk.universitetetioslo.no/trygver/themes/mvc/mvc-index.html)
 - [Package by component and architecturally-aligned testing](http://www.codingthearchitecture.com/2015/03/08/package_by_component_and_architecturally_aligned_testing.html)
