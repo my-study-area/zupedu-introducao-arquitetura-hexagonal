@@ -1,9 +1,9 @@
-package br.com.zup.edu.cineminha.controller;
+package br.com.zup.edu.cineminha.application;
 
-import br.com.zup.edu.cineminha.controller.input.NovaSessaoRequest;
-import br.com.zup.edu.cineminha.repository.FilmeRepository;
+import br.com.zup.edu.cineminha.domain.CadastraNovaSessaoService;
+import br.com.zup.edu.cineminha.domain.CadastraNovoFilmeService;
+import br.com.zup.edu.cineminha.domain.Sessao;
 import br.com.zup.edu.cineminha.adapters.persistence.SalaRepository;
-import br.com.zup.edu.cineminha.repository.SessaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,19 +19,20 @@ import javax.validation.Valid;
 public class SessaoController {
 
     @Autowired
-    private SessaoRepository repository;
+    private CadastraNovaSessaoService sessaoService;
 
     @Autowired
     private SalaRepository salaRepository;
 
     @Autowired
-    private FilmeRepository filmeRepository;
+    private CadastraNovoFilmeService filmeService;
 
     @PostMapping
     public ResponseEntity<?> cadastra(@RequestBody @Valid NovaSessaoRequest request,
                                       UriComponentsBuilder uriBuilder) {
 
-        var sessao = repository.save(request.toModel(salaRepository, filmeRepository));
+        Sessao sessao = request.toModel(salaRepository, filmeService);
+        this.sessaoService.cadastrar(sessao);
 
         var location = uriBuilder.path("/api/sessoes/{id}")
                 .buildAndExpand(sessao.getId())
