@@ -1,7 +1,7 @@
-package br.com.zup.edu.cineminha.adapters.persistence;
+package br.com.zup.edu.cineminha.adapters.persistence.sala;
 
-import br.com.zup.edu.cineminha.domain.CadastraNovaSalaRepository;
-import br.com.zup.edu.cineminha.domain.Sala;
+import br.com.zup.edu.cineminha.domain.sala.CadastraNovaSalaRepository;
+import br.com.zup.edu.cineminha.domain.sala.Sala;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

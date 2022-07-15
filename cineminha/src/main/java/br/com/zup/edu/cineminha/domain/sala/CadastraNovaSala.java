@@ -1,4 +1,4 @@
-package br.com.zup.edu.cineminha.domain;
+package br.com.zup.edu.cineminha.domain.sala;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

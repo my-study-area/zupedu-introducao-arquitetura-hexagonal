@@ -1,4 +1,4 @@
-package br.com.zup.edu.cineminha.domain;
+package br.com.zup.edu.cineminha.domain.sala;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

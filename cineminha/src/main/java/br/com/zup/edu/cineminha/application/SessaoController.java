@@ -3,7 +3,7 @@ package br.com.zup.edu.cineminha.application;
 import br.com.zup.edu.cineminha.domain.CadastraNovaSessaoService;
 import br.com.zup.edu.cineminha.domain.CadastraNovoFilmeService;
 import br.com.zup.edu.cineminha.domain.Sessao;
-import br.com.zup.edu.cineminha.adapters.persistence.SalaRepository;
+import br.com.zup.edu.cineminha.adapters.persistence.sala.SalaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,7 +1,6 @@
 package br.com.zup.edu.cineminha.domain;
 
-import br.com.zup.edu.cineminha.domain.Filme;
-import br.com.zup.edu.cineminha.domain.Sala;
+import br.com.zup.edu.cineminha.domain.sala.Sala;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
