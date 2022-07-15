@@ -1,6 +1,6 @@
-package br.com.zup.edu.cineminha.domain;
+package br.com.zup.edu.cineminha.domain.filme;
 
-import org.springframework.stereotype.Repository;
+import br.com.zup.edu.cineminha.domain.filme.Filme;
 
 import java.util.Optional;
 

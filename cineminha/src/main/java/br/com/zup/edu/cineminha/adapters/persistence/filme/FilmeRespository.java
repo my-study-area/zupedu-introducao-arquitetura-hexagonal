@@ -1,6 +1,6 @@
-package br.com.zup.edu.cineminha.adapters.persistence;
+package br.com.zup.edu.cineminha.adapters.persistence.filme;
 
-import br.com.zup.edu.cineminha.domain.Filme;
+import br.com.zup.edu.cineminha.domain.filme.Filme;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package br.com.zup.edu.cineminha.application;
 
-import br.com.zup.edu.cineminha.domain.CadastraNovoFilmeService;
+import br.com.zup.edu.cineminha.domain.filme.CadastraNovoFilmeService;
 import br.com.zup.edu.cineminha.domain.Sessao;
 import br.com.zup.edu.cineminha.adapters.persistence.sala.SalaRepository;
 

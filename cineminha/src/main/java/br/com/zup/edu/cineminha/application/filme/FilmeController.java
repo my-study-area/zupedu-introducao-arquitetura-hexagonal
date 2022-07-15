@@ -1,6 +1,6 @@
-package br.com.zup.edu.cineminha.application;
+package br.com.zup.edu.cineminha.application.filme;
 
-import br.com.zup.edu.cineminha.domain.CadastraNovoFilmeService;
+import br.com.zup.edu.cineminha.domain.filme.CadastraNovoFilmeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

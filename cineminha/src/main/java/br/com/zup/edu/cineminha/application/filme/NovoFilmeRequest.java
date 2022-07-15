@@ -1,7 +1,7 @@
-package br.com.zup.edu.cineminha.application;
+package br.com.zup.edu.cineminha.application.filme;
 
-import br.com.zup.edu.cineminha.domain.Classificacao;
-import br.com.zup.edu.cineminha.domain.Filme;
+import br.com.zup.edu.cineminha.domain.filme.Classificacao;
+import br.com.zup.edu.cineminha.domain.filme.Filme;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
