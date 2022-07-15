@@ -1,7 +1,7 @@
-package br.com.zup.edu.cineminha.application;
+package br.com.zup.edu.cineminha.application.sessao;
 
 import br.com.zup.edu.cineminha.domain.filme.CadastraNovoFilmeService;
-import br.com.zup.edu.cineminha.domain.Sessao;
+import br.com.zup.edu.cineminha.domain.sessao.Sessao;
 import br.com.zup.edu.cineminha.adapters.persistence.sala.SalaRepository;
 
 import javax.validation.constraints.NotNull;

@@ -1,4 +1,4 @@
-package br.com.zup.edu.cineminha.domain;
+package br.com.zup.edu.cineminha.domain.sessao;
 
 import br.com.zup.edu.cineminha.domain.filme.Filme;
 import br.com.zup.edu.cineminha.domain.sala.Sala;

@@ -1,7 +1,7 @@
-package br.com.zup.edu.cineminha.adapters.persistence;
+package br.com.zup.edu.cineminha.adapters.persistence.sessao;
 
-import br.com.zup.edu.cineminha.domain.CadastraNovaSessaoRepository;
-import br.com.zup.edu.cineminha.domain.Sessao;
+import br.com.zup.edu.cineminha.domain.sessao.CadastraNovaSessaoRepository;
+import br.com.zup.edu.cineminha.domain.sessao.Sessao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

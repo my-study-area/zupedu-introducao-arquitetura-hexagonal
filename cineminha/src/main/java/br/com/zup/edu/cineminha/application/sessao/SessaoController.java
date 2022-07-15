@@ -1,8 +1,8 @@
-package br.com.zup.edu.cineminha.application;
+package br.com.zup.edu.cineminha.application.sessao;
 
-import br.com.zup.edu.cineminha.domain.CadastraNovaSessaoService;
+import br.com.zup.edu.cineminha.domain.sessao.CadastraNovaSessaoService;
 import br.com.zup.edu.cineminha.domain.filme.CadastraNovoFilmeService;
-import br.com.zup.edu.cineminha.domain.Sessao;
+import br.com.zup.edu.cineminha.domain.sessao.Sessao;
 import br.com.zup.edu.cineminha.adapters.persistence.sala.SalaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
