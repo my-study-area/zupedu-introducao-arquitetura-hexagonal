@@ -1,7 +1,7 @@
 package br.com.zup.edu.cineminha.application.sessao;
 
 import br.com.zup.edu.cineminha.domain.sessao.CadastraNovaSessaoService;
-import br.com.zup.edu.cineminha.domain.filme.CadastraNovoFilmeService;
+import br.com.zup.edu.cineminha.domain.filme.ManterFilmeService;
 import br.com.zup.edu.cineminha.domain.sessao.Sessao;
 import br.com.zup.edu.cineminha.adapters.persistence.sala.SalaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class SessaoController {
     private SalaRepository salaRepository;
 
     @Autowired
-    private CadastraNovoFilmeService filmeService;
+    private ManterFilmeService filmeService;
 
     @PostMapping
     public ResponseEntity<?> cadastra(@RequestBody @Valid NovaSessaoRequest request,

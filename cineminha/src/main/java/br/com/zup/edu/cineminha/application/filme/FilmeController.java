@@ -1,6 +1,6 @@
 package br.com.zup.edu.cineminha.application.filme;
 
-import br.com.zup.edu.cineminha.domain.filme.CadastraNovoFilmeService;
+import br.com.zup.edu.cineminha.domain.filme.ManterFilmeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +16,7 @@ import javax.validation.Valid;
 public class FilmeController {
 
     @Autowired
-    private CadastraNovoFilmeService service;
+    private ManterFilmeService service;
 
     @PostMapping
     public ResponseEntity<?> cadastra(@RequestBody @Valid NovoFilmeRequest request,

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class CadastraNovoFilmeService {
+public class ManterFilmeService {
     @Autowired
     private CadastraNovoFilmeRepository repository;
 
