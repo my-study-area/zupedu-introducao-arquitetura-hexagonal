@@ -161,7 +161,9 @@ Cadastrar categoria de remédio:
 Cadastrar remédio:
 ![Diagrama de sequência do cadastro de remédios](./img/cadastrar-remedio.png)
 
-**Respostas**
+#### Respostas
+
+**Controller**
 
 Crio a classe controller anotada com `@RequestMapping` informando o path e `@RestController`. Adiciono o método cadastrar anotado com `@PostMapping` que recebe os dados da request anotado com `@Valid` e `@RequestBody` e um segundo parâmetro utilizando um `URIComponentBuilder`. No corpo do método, converto os dados de request numa classe de domínio, persisto no banco de dados utilizando um service que utiliza uma implementação de repository port, injetada via construtor, para armazenar as  informações no banco de dados. Retorno um `ReponseEntity` utilizando o método create, passando uma URI gerada utilizando o parâmetro do método, URIComponentBuilder, para gerar uma status 201 com o location.
 
@@ -173,6 +175,57 @@ Crio um classe de service anotada com `@Service` e adiciono o método salvar que
 
 Crio uma classe anotada com @Component e que implementa a porta responsável pela persistência dos dados. Implemento os métodos necessários e utilizo um repository do Spring, injetado via construtor, para persistir os dados. 
 
+## 2. Refatorando projetos para a Arquitetura Hexagonal
+
+### Teorias necessárias
+Refatorando projetos para a Arquitetura Hexagonal
+
+- Passando um código de MVC para Arquitetura Hexagonal
+  - Video: Passando um código de MVC para Arquitetura Hexagonal
+### Atividades preparatórias
+
+- Video: Passando um código MVC de um cinema para Arquitetura Hexagonal
+  - [Respositório do projeto desenvolvido no vídeo](https://github.com/zup-academy/cineminha/tree/hexagonal-tc2-lt1)
+
+
+Descreva como você passou o cadastro de filmes para Arquitetura Hexagonal:
+- Crio a porta de saída para o banco dados (CadastraNovoFilmeRepository)
+- Crio o repository para de Filme (FilmeRepository)
+- Crio o adapter (SqlFilmeAdapter) que implementa a porta de saída para o banco de dados e que usa um repository de filme gerado no spring 
+- Crio um caso de uso (service) para cadastro de filme (MaterFilme). Nele injeto um CadastraNovoFilmeRepository para realizar as transações com banco de dados
+- Realizo as devidas alterações de dependências nas classes
+- Crio os pacotes domain, adapters e application. Movo as devidas classes e interfaces para seus devidos pacotes
+
+**[Resposta do Especialista]**
+
+Começaria pelo controller e caminharia pelas dependências da classe para ter um panorama do que é preciso fazer. Começaria separando as classes em pacotes seguindo a estrutura adapter, domain, application. Manteria o controller no pacote application e moveria o modelo de Filme e o enum Classificacao para o pacote domain.
+
+Depois disso, criaria um serviço, que estaria no pacote domain, na aplicação que seria responsável por chamar uma porta (interface) que seria responsável por salvar o filme no banco do dados e extrairia a chamada do repositório do controller para essa classe de serviço. A porta seria implementada por uma classe no pacote adapter que seria responsável por tratar a persistência e delegar as chamadas para o repository do spring.
+
+Para a classe de entrada de dados, NovoFilmeRequest, seria criado uma interface com o método toModel() no pacote domain chamada DadosNovoFilme na qual a classe NovoFilmeRequst implementasse essa interface.
+
+Descreva como você passou o cadastro de sessões para Arquitetura Hexagonal:
+- Crio a porta de saída para o banco de dados (CadastraNovaSessaoRespository)
+- Crio o adapter (SqlSessaoAdapter) que implementa a porta de saída do banco de dados e que usa o repository de sessao gerado no Spring
+- Crio um caso de uso (service) responsável por cadastrar a Sessão (ManterSessao) e que injeta um CadastraNovaSessaoRespository para salvar no banco de dados
+- Realizo as devidas alterações de dependências nas classes
+- Crio os pacotes domain, adapters e application. Movo as devidas classes e interfaces para seus devidos pacotes
+
+**[Resposta do Especialista]**
+
+Começando pelo controller e caminharia pelas dependências da classe para ter um panorama do que é preciso fazer. Começaria separando as classes em pacotes seguindo a estrutura adapter, domain, application. Manteria o controller no pacote application e moveria o modelo de Filme para o pacote domain.
+
+Como depois dessas mudanças o pacote model e repository estariam vazios, apagarias estes pacotes.
+
+Feito isso, no domínio criaria um serviço que seria responsável por chamar a porta (interface) que seria responsável por definir o contrato que salva uma sessão no banco do dados e removeria a chamada do repositório de sessão do controller. A porta seria implementada por uma classe no pacote adapter que seria responsável por tratar a persistência e delegar as chamadas para o repository do spring.
+
+Para a classe de entrada de dados, NovaSessaoRequest, poderíamos implementar de algumas formas. Seria criado uma interface no domínio chamada DadosNovaSessao com um método toModel() que converteria a request para o objeto Sessao. Já que uma nova sessão depende de alguma forma para buscar um filme e uma sala. A minha abordagem primária seria criar outras duas interfaces: BuscaFilme e a BuscaSessao. Essas interfaces são portas que seriam implementadas pelo adaptador de persistência do Filme e da Sala, respectivamente. Nesses adaptadores, delegaria a chamada para o repository do Spring.
+
+Obs: É interessante que você revise os conteúdos vistos durante este programação de formação e caso você queira continuar aprendendo mais sobre o assunto recomendamos a leitura do artigo de arquitetura hexagonal do Cockburn e revisitar os conceitos de SOLID. Principalmente sobre o DIP (Princípio de Inversão de Dependência)
+
+### Atividades obrigatórias
+
+
 ## Links
 - [MVC XEROX PARC 1978-79](https://folk.universitetetioslo.no/trygver/themes/mvc/mvc-index.html)
 - [Package by component and architecturally-aligned testing](http://www.codingthearchitecture.com/2015/03/08/package_by_component_and_architecturally_aligned_testing.html)
@@ -181,3 +234,4 @@ Crio uma classe anotada com @Component e que implementa a porta responsável pel
 - [Hexagonal architecture](https://alistair.cockburn.us/hexagonal-architecture/)
 - [Link do código gerado no vídeo Implementando um cadastro de autores com Arquitetura Hexagonal - Conteúdo Técnico](https://github.com/zup-academy/livraria/tree/hexagonal-tc1-lt1/src/main/java/com/zupedu/livraria)
 - [Layered Architecture" da Baeldung](https://www.baeldung.com/cs/layered-architecture)
+- [Package by Feature](https://phauer.com/2020/package-by-feature/)
