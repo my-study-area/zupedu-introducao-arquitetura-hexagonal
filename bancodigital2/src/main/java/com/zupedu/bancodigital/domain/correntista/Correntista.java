@@ -1,4 +1,4 @@
-package com.zupedu.bancodigital.model;
+package com.zupedu.bancodigital.domain.correntista;
 
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -12,7 +12,6 @@ import javax.validation.constraints.Positive;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;

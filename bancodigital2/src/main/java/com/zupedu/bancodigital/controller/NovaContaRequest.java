@@ -1,9 +1,9 @@
 package com.zupedu.bancodigital.controller;
 
 import com.zupedu.bancodigital.model.Conta;
-import com.zupedu.bancodigital.model.Correntista;
+import com.zupedu.bancodigital.domain.correntista.Correntista;
 import com.zupedu.bancodigital.model.Tipo;
-import com.zupedu.bancodigital.repository.CorrentistaRepository;
+import com.zupedu.bancodigital.adapters.repository.CorrentistaRepository;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;

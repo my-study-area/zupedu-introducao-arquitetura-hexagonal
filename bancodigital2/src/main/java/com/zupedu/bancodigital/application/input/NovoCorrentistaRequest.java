@@ -1,7 +1,7 @@
-package com.zupedu.bancodigital.controller.input;
+package com.zupedu.bancodigital.application.input;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.zupedu.bancodigital.model.Correntista;
+import com.zupedu.bancodigital.domain.correntista.Correntista;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.validation.constraints.NotBlank;

@@ -1,7 +1,7 @@
 package com.zupedu.bancodigital.controller;
 
 import com.zupedu.bancodigital.repository.ContaRepository;
-import com.zupedu.bancodigital.repository.CorrentistaRepository;
+import com.zupedu.bancodigital.adapters.repository.CorrentistaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

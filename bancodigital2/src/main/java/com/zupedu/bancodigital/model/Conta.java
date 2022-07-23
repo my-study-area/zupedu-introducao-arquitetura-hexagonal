@@ -1,5 +1,7 @@
 package com.zupedu.bancodigital.model;
 
+import com.zupedu.bancodigital.domain.correntista.Correntista;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
