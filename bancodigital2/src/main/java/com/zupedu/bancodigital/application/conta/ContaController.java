@@ -1,30 +1,35 @@
-package com.zupedu.bancodigital.controller;
+package com.zupedu.bancodigital.application.conta;
 
-import com.zupedu.bancodigital.repository.ContaRepository;
 import com.zupedu.bancodigital.adapters.repository.CorrentistaRepository;
+import com.zupedu.bancodigital.application.input.NovaContaRequest;
+import com.zupedu.bancodigital.domain.conta.CadastraNovaContaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/contas")
 public class ContaController {
 
     @Autowired
-    private ContaRepository contaRepository;
+    private CadastraNovaContaService contaService;
 
     @Autowired
     private CorrentistaRepository correntistaRepository;
 
     @PostMapping
-    public ResponseEntity<?> cadastra(NovaContaRequest request,
+    public ResponseEntity<?> cadastra(@Valid @RequestBody NovaContaRequest request,
                                       UriComponentsBuilder uriBuilder) {
 
 
-        var conta = contaRepository.save(request.paraConta(correntistaRepository));
+        var conta = request.paraConta(correntistaRepository);
+        this.contaService.cadastrar(conta);
 
         var location = uriBuilder.path("/api/contas/{id}")
                 .buildAndExpand(conta.getId())

@@ -1,6 +1,6 @@
-package com.zupedu.bancodigital.repository;
+package com.zupedu.bancodigital.adapters.repository;
 
-import com.zupedu.bancodigital.model.Conta;
+import com.zupedu.bancodigital.domain.conta.Conta;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ContaRepository extends JpaRepository<Conta, Long> {

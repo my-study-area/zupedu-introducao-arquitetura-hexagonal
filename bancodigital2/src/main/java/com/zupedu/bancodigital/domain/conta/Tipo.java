@@ -1,4 +1,4 @@
-package com.zupedu.bancodigital.model;
+package com.zupedu.bancodigital.domain.conta;
 
 public enum Tipo {
 
