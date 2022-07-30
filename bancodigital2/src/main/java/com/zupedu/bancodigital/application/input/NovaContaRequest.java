@@ -1,6 +1,8 @@
 package com.zupedu.bancodigital.application.input;
 
 import com.zupedu.bancodigital.domain.conta.Conta;
+import com.zupedu.bancodigital.domain.correntista.BuscarCorrentistaService;
+import com.zupedu.bancodigital.domain.correntista.CadastrarCorrentistaService;
 import com.zupedu.bancodigital.domain.correntista.Correntista;
 import com.zupedu.bancodigital.domain.conta.Tipo;
 import com.zupedu.bancodigital.adapters.repository.CorrentistaRepository;
@@ -25,8 +27,8 @@ public class NovaContaRequest {
         return correntistaId;
     }
 
-    public Conta paraConta(CorrentistaRepository correntistaRepository) {
-        Correntista correntista = correntistaRepository.findById(correntistaId)
+    public Conta paraConta(BuscarCorrentistaService buscarCorrentistaService) {
+        Correntista correntista = buscarCorrentistaService.buscarPorId(correntistaId)
                                                        .orElseThrow(() -> new IllegalStateException("Correntista nao cadastrado"));
         return new Conta(tipo, correntista);
     }
