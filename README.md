@@ -224,7 +224,48 @@ Para a classe de entrada de dados, NovaSessaoRequest, poderíamos implementar de
 Obs: É interessante que você revise os conteúdos vistos durante este programação de formação e caso você queira continuar aprendendo mais sobre o assunto recomendamos a leitura do artigo de arquitetura hexagonal do Cockburn e revisitar os conceitos de SOLID. Principalmente sobre o DIP (Princípio de Inversão de Dependência)
 
 ### Atividades obrigatórias
+**Refatore o código de um projeto de gestão de correntistas em um Banco Digital**
 
+- [Respositório do projeto do banco digital 2](https://github.com/zup-academy/bancodigital)
+
+Aplicando os conhecimentos adquiridos e utilizados até aqui
+
+1. Descreva como você criou estruturou os pacotes da aplicação
+
+    Crio os pacotes adapters, domain e application. Em adapters adiciono as classes que implementam os ports e as interfaces de repository do Spring num pacote interno. Em domain adiciono as classes de negócio (domínio da aplicação) separadas por pacote com seus usecases e demais interfaces e classes envolvidas ao negócio. Em application adiciono as classes de controllers e as classes de DTO num pacote interno.
+
+    [Resposta do Especialista]
+
+    Trabalharia em camadas criando um pacote chamado application para manter os Controller e as classes de entrada. Um pacote chamado domain para manter as classes relativas ao domínio da aplicação (parte de dentro do hexágono) e, por fim, criaria um pacote chamado adapters no qual ficariam os adaptadores da aplicação
+
+2. Descreva como você passaria o cadastro de uma nova pessoa que fosse correntista da conta
+
+    Crio o pacote `application/correntista` e movo as classes de controller e DTOs (classes de entrada) no devidos pacotes. Na classe do controller altero a dependência da interface do repository do spring por uma classe de usecase chamada CadastraCorrentistaService (pacote domain) que utiliza uma port/interface (pacote domain), chamada CorrentistaRepositoryPort. A port/interface terá uma implementação chamada CorrentistaRepositoryAdapter (pacotes adapaters) que utiliza o repository do Spring responsável por persistir no banco de dados.
+
+    [Resposta do Especialista]
+
+    Dentro do pacote application, criaria uma pacote chamado correntistas e moveria as classes CorrentistaController e NovoCorrentistaRequest para lá. Além disso, na pasta domain criaria também um pacote chamado correntistas e moveria a entidade Correntista para lá. Dentro desse diretório criaria um serviço e uma interface chamada DadosNovoCorrentista na qual estaria definido um método chamado paraCorrentista(). Essa interface seria implementada pela classe de entrada (NovoCorrentistaRequest). No novo serviço, teria um método que receberia essa nova interface como parâmetro.
+
+    Este método será o responsável por chamar a porta que é responsável por salvar um novo objeto Correntista no banco. Logo, criaria uma interface para representar essa porta com um método que recebesse a entidade Correntista e colocaria essa porta como dependência do novo serviço.
+
+    Como foi criado uma porta, é necessário criar um adaptador. No pacote adapters, criaria um novo pacote chamado persistence e outro pacote, dentro de persistence, chamado correntista. No pacote correntista criaria uma classe chamada SqlCorrentistaAdapter e moveria o repositório já existente do Spring para esse pacote. Nesse adapter, delegaria a chamada para o repository do Spring.
+
+    Para finalizar, no controller, ao invés de receber a interface, receberia o serviço que foi criado e apagaria a referência para o repository do Spring.
+
+3. No cadastro de uma nova conta, é passado um CorrentistaRepository como parâmetro no método paraConta() da classe NovaContaRequest. Quando transformamos essa parte para seguir a Arquitetura Hexagonal, que mudanças precisam ser feitas?
+
+    - crio o método buscarPorId na port CorrentistaRepositoryPort e implemento esse novo método no adapter CorrentistaRepositoryAdapter que utiliza o repository de correntista do spring (CorrentistaRepository) para consultar o correntista no banco de dados
+    - crio o usecase/service BuscarCorrentistaService. Adiciono o método buscarPorId que utiliza uma port CorrentistaRepositoryPort para encontrar um correntista
+    - no método paraConta() da classe NovaContaRequest altero o parâmetro de CorrentistaRepository para BuscarCorrentistaService
+    - e para finalizar, no controller de conta altero a dependência do repository do spring para o service BuscarCorrentistaService
+    
+    [Resposta do Especialista]
+
+    Ao invés de receber um repositório direto do Spring, uma alternativa é receber a Porta que fica responsável por buscar um Correntista de algum lugar (do banco de dados por exemplo) e trocar a implementação do método.
+
+    Outra solução, seria usar algo como a interface Function da API do Java 8
+
+- [Implementação de arquitetura hexagonal no projeto Banco Digital 2](https://github.com/my-study-area/zupedu-introducao-arquitetura-hexagonal/tree/main/bancodigital2)
 
 ## Links
 - [MVC XEROX PARC 1978-79](https://folk.universitetetioslo.no/trygver/themes/mvc/mvc-index.html)
