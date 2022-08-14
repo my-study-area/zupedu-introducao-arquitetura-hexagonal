@@ -267,6 +267,12 @@ Aplicando os conhecimentos adquiridos e utilizados até aqui
 
 - [Implementação de arquitetura hexagonal no projeto Banco Digital 2](https://github.com/my-study-area/zupedu-introducao-arquitetura-hexagonal/tree/main/bancodigital2)
 
+Diagrama de sequência do cadastro de correntista:
+![Diagrama de sequência mostrando as dependência de classes no cadastro de correntista](./img/CorrentistaController_cadastra.png)
+
+Diagrama de sequência do cadastro de conta:
+![Diagrama de sequência mostrando as dependência de classes no cadastro de conta](./img/ContaController_cadastra.png)
+
 ## Links
 - [MVC XEROX PARC 1978-79](https://folk.universitetetioslo.no/trygver/themes/mvc/mvc-index.html)
 - [Package by component and architecturally-aligned testing](http://www.codingthearchitecture.com/2015/03/08/package_by_component_and_architecturally_aligned_testing.html)
