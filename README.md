@@ -282,3 +282,4 @@ Diagrama de sequência do cadastro de conta:
 - [Link do código gerado no vídeo Implementando um cadastro de autores com Arquitetura Hexagonal - Conteúdo Técnico](https://github.com/zup-academy/livraria/tree/hexagonal-tc1-lt1/src/main/java/com/zupedu/livraria)
 - [Layered Architecture" da Baeldung](https://www.baeldung.com/cs/layered-architecture)
 - [Package by Feature](https://phauer.com/2020/package-by-feature/)
+- [Ports and Adapters Pattern (Hexagonal Architecture) by Juan Manuel Garrido de Paz](https://jmgarridopaz.github.io/content/hexagonalarchitecture.html)
