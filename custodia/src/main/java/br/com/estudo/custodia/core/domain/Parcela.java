@@ -1,4 +1,4 @@
-package br.com.estudo.custodia;
+package br.com.estudo.custodia.core.domain;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

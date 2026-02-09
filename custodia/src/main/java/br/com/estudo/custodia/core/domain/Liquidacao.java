@@ -1,15 +1,15 @@
-package br.com.estudo.custodia;
+package br.com.estudo.custodia.core.domain;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public class EventoLiquidacao {
+public class Liquidacao {
     private String numeroContrato;
     private List<Parcela> fluxoParcelas;
     private BigDecimal valorTotal;
     private Integer motivoBaixa;
 
-    public EventoLiquidacao(String numeroContrato, List<Parcela> fluxoParcelas, BigDecimal valorTotal, Integer motivoBaixa) {
+    public Liquidacao(String numeroContrato, List<Parcela> fluxoParcelas, BigDecimal valorTotal, Integer motivoBaixa) {
         this.numeroContrato = numeroContrato;
         this.fluxoParcelas = fluxoParcelas;
         this.valorTotal = valorTotal;

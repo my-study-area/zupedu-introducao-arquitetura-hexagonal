@@ -1,4 +1,6 @@
-package br.com.estudo.custodia;
+package br.com.estudo.custodia.adapter.out.dto;
+
+import br.com.estudo.custodia.ParcelaRequestDTO;
 
 import java.math.BigDecimal;
 import java.util.List;
