@@ -1,6 +1,4 @@
-package br.com.estudo.custodia.core.domain;
-
-import br.com.estudo.custodia.adapter.out.dto.LiquidacaoResponseDTO;
+package br.com.estudo.custodia.adapter.dto.api;
 
 public class RespostaHttp {
     private int status;

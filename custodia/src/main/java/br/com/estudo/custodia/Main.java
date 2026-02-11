@@ -1,15 +1,15 @@
 package br.com.estudo.custodia;
 
+import br.com.estudo.custodia.adapter.dto.api.LiquidacaoRequestDTO;
+import br.com.estudo.custodia.adapter.dto.api.RespostaHttp;
+import br.com.estudo.custodia.adapter.dto.mensageria.Evento;
+import br.com.estudo.custodia.adapter.dto.mensageria.EventoLiquidacao;
+import br.com.estudo.custodia.adapter.dto.mensageria.EventoParcela;
+import br.com.estudo.custodia.adapter.dto.mensageria.EventoRetorno;
+import br.com.estudo.custodia.adapter.dto.mensageria.Header;
+import br.com.estudo.custodia.adapter.mapper.LiquidacaoMapper;
 import br.com.estudo.custodia.adapter.out.LiquidarRestClientAdapter;
 import br.com.estudo.custodia.adapter.out.ProducerPortKafkaAdapter;
-import br.com.estudo.custodia.adapter.out.dto.LiquidacaoRequestDTO;
-import br.com.estudo.custodia.adapter.out.mapper.LiquidacaoMapper;
-import br.com.estudo.custodia.core.domain.Evento;
-import br.com.estudo.custodia.core.domain.EventoRetorno;
-import br.com.estudo.custodia.core.domain.Header;
-import br.com.estudo.custodia.core.domain.Liquidacao;
-import br.com.estudo.custodia.core.domain.Parcela;
-import br.com.estudo.custodia.core.domain.RespostaHttp;
 import br.com.estudo.custodia.port.out.BrokerProducerPort;
 import br.com.estudo.custodia.port.out.LiquidarHttpClientPort;
 import org.slf4j.Logger;
@@ -25,12 +25,12 @@ public class Main {
         Logger logger = LoggerFactory.getLogger(Main.class);
 
         // Evento
-        Parcela parcela1 = new Parcela(1, LocalDate.now(), new BigDecimal(5));
-        Parcela parcela2 = new Parcela(2, LocalDate.now(), new BigDecimal(5));
-        List<Parcela> parcelas = List.of(parcela1, parcela2);
-        Liquidacao liquidacao = new Liquidacao("0123", parcelas, BigDecimal.TEN, 0);
+        EventoParcela eventoParcela1 = new EventoParcela(1, LocalDate.now(), new BigDecimal(5));
+        EventoParcela eventoParcela2 = new EventoParcela(2, LocalDate.now(), new BigDecimal(5));
+        List<EventoParcela> eventoParcelas = List.of(eventoParcela1, eventoParcela2);
+        EventoLiquidacao eventoLiquidacao = new EventoLiquidacao("0123", eventoParcelas, BigDecimal.TEN, 0);
         Header header = new Header(UUID.randomUUID().toString(), "topico1");
-        Evento<Liquidacao> evento = new Evento<>(header, liquidacao);
+        Evento<EventoLiquidacao> evento = new Evento<>(header, eventoLiquidacao);
         logger.info("Evento: {}", evento.getData());
 
         // Request API liquidação
@@ -41,7 +41,7 @@ public class Main {
 
 
         // Envio de resposta de mensageria
-        EventoRetorno eventoRetorno = new EventoRetorno(responseHttp, liquidacao);
+        EventoRetorno eventoRetorno = new EventoRetorno(responseHttp, eventoLiquidacao);
         BrokerProducerPort producerKafkaAdapter = new ProducerPortKafkaAdapter();
         producerKafkaAdapter.send(eventoRetorno);
 

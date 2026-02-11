@@ -1,7 +1,7 @@
 package br.com.estudo.custodia.mock;
 
-import br.com.estudo.custodia.adapter.out.dto.LiquidacaoRequestDTO;
-import br.com.estudo.custodia.adapter.out.dto.LiquidacaoResponseDTO;
+import br.com.estudo.custodia.adapter.dto.api.LiquidacaoRequestDTO;
+import br.com.estudo.custodia.adapter.dto.api.LiquidacaoResponseDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

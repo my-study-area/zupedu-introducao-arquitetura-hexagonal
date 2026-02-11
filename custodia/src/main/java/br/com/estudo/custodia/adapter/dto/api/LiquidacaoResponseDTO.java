@@ -1,4 +1,4 @@
-package br.com.estudo.custodia.adapter.out.dto;
+package br.com.estudo.custodia.adapter.dto.api;
 
 public record LiquidacaoResponseDTO(
         String numeroContrato

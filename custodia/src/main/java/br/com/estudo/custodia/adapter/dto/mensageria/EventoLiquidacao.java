@@ -1,17 +1,17 @@
-package br.com.estudo.custodia.core.domain;
+package br.com.estudo.custodia.adapter.dto.mensageria;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public class Liquidacao {
+public class EventoLiquidacao {
     private String numeroContrato;
-    private List<Parcela> fluxoParcelas;
+    private List<EventoParcela> fluxoEventoParcelas;
     private BigDecimal valorTotal;
     private Integer motivoBaixa;
 
-    public Liquidacao(String numeroContrato, List<Parcela> fluxoParcelas, BigDecimal valorTotal, Integer motivoBaixa) {
+    public EventoLiquidacao(String numeroContrato, List<EventoParcela> fluxoEventoParcelas, BigDecimal valorTotal, Integer motivoBaixa) {
         this.numeroContrato = numeroContrato;
-        this.fluxoParcelas = fluxoParcelas;
+        this.fluxoEventoParcelas = fluxoEventoParcelas;
         this.valorTotal = valorTotal;
         this.motivoBaixa = motivoBaixa;
     }
@@ -20,8 +20,8 @@ public class Liquidacao {
         return numeroContrato;
     }
 
-    public List<Parcela> getFluxoParcelas() {
-        return fluxoParcelas;
+    public List<EventoParcela> getFluxoParcelas() {
+        return fluxoEventoParcelas;
     }
 
     public BigDecimal getValorTotal() {
@@ -36,7 +36,7 @@ public class Liquidacao {
     public String toString() {
         return "EventoLiquidacaoCPR{" +
                 "numeroContrato='" + numeroContrato + '\'' +
-                ", fluxoParcelas=" + fluxoParcelas +
+                ", fluxoParcelas=" + fluxoEventoParcelas +
                 ", valorTotal=" + valorTotal +
                 ", motivoBaixa=" + motivoBaixa +
                 '}';

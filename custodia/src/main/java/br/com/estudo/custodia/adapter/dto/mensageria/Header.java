@@ -1,4 +1,4 @@
-package br.com.estudo.custodia.core.domain;
+package br.com.estudo.custodia.adapter.dto.mensageria;
 
 public class Header {
     private String id;

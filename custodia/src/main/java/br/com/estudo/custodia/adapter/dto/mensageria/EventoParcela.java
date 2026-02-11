@@ -1,14 +1,14 @@
-package br.com.estudo.custodia.core.domain;
+package br.com.estudo.custodia.adapter.dto.mensageria;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Parcela {
+public class EventoParcela {
     private int numeroParcela;
     private LocalDate dataVencimento;
     private BigDecimal valor;
 
-    public Parcela(int numeroParcela, LocalDate dataVencimento, BigDecimal valor) {
+    public EventoParcela(int numeroParcela, LocalDate dataVencimento, BigDecimal valor) {
         this.numeroParcela = numeroParcela;
         this.dataVencimento = dataVencimento;
         this.valor = valor;

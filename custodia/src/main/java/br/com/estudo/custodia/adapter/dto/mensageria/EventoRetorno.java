@@ -1,10 +1,12 @@
-package br.com.estudo.custodia.core.domain;
+package br.com.estudo.custodia.adapter.dto.mensageria;
+
+import br.com.estudo.custodia.adapter.dto.api.RespostaHttp;
 
 public class EventoRetorno {
     private RespostaHttp retorno;
-    private Liquidacao evento;
+    private EventoLiquidacao evento;
 
-    public EventoRetorno(RespostaHttp retorno, Liquidacao evento) {
+    public EventoRetorno(RespostaHttp retorno, EventoLiquidacao evento) {
         this.retorno = retorno;
         this.evento = evento;
     }

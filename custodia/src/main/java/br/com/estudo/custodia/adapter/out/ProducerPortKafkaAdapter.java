@@ -1,6 +1,6 @@
 package br.com.estudo.custodia.adapter.out;
 
-import br.com.estudo.custodia.core.domain.EventoRetorno;
+import br.com.estudo.custodia.adapter.dto.mensageria.EventoRetorno;
 import br.com.estudo.custodia.port.out.BrokerProducerPort;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

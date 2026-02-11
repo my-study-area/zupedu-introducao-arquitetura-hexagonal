@@ -1,4 +1,4 @@
-package br.com.estudo.custodia.core.domain;
+package br.com.estudo.custodia.adapter.dto.mensageria;
 
 public class Evento<T> {
     private Header header;

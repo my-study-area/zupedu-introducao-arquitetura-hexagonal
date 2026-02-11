@@ -1,8 +1,8 @@
 package br.com.estudo.custodia.adapter.out;
 
-import br.com.estudo.custodia.adapter.out.dto.LiquidacaoRequestDTO;
-import br.com.estudo.custodia.adapter.out.dto.LiquidacaoResponseDTO;
-import br.com.estudo.custodia.core.domain.RespostaHttp;
+import br.com.estudo.custodia.adapter.dto.api.LiquidacaoRequestDTO;
+import br.com.estudo.custodia.adapter.dto.api.LiquidacaoResponseDTO;
+import br.com.estudo.custodia.adapter.dto.api.RespostaHttp;
 import br.com.estudo.custodia.port.out.LiquidarHttpClientPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
