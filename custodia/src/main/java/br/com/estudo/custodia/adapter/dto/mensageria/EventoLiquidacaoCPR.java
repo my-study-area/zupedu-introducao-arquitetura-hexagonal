@@ -1,17 +1,19 @@
 package br.com.estudo.custodia.adapter.dto.mensageria;
 
-public class EventoLiquidacao implements EventoBase {
-    private Header header;
-    private Liquidacao data;
+import br.com.estudo.custodia.core.domain.LiquidacaoCPR;
 
-    public EventoLiquidacao(Header header, Liquidacao data) {
+public class EventoLiquidacaoCPR implements EventoBase {
+    private Header header;
+    private LiquidacaoCPR data;
+
+    public EventoLiquidacaoCPR(Header header, LiquidacaoCPR data) {
         this.header = header;
         this.data = data;
     }
 
     @Override
     public String toString() {
-        return "Evento{" +
+        return "EventoLiquidacaoCPR{" +
                 "header=" + header +
                 ", data=" + data +
                 '}';
@@ -23,7 +25,7 @@ public class EventoLiquidacao implements EventoBase {
     }
 
     @Override
-    public Liquidacao getData() {
+    public LiquidacaoCPR getData() {
         return data;
     }
 }

@@ -1,13 +1,13 @@
 package br.com.estudo.custodia;
 
-import br.com.estudo.custodia.adapter.dto.mensageria.EventoLiquidacao;
+import br.com.estudo.custodia.adapter.dto.mensageria.EventoLiquidacaoCPR;
 import br.com.estudo.custodia.adapter.dto.mensageria.EventoParcela;
 import br.com.estudo.custodia.adapter.dto.mensageria.Header;
-import br.com.estudo.custodia.adapter.dto.mensageria.Liquidacao;
 import br.com.estudo.custodia.adapter.in.ConsumerKafkaAdapter;
-import br.com.estudo.custodia.adapter.mapper.LiquidacaoMapper;
+import br.com.estudo.custodia.adapter.mapper.LiquidacaoCPRMapper;
 import br.com.estudo.custodia.adapter.out.LiquidarRestClientAdapter;
 import br.com.estudo.custodia.adapter.out.ProducerPortKafkaAdapter;
+import br.com.estudo.custodia.core.domain.LiquidacaoCPR;
 import br.com.estudo.custodia.core.domain.LiquidacaoService;
 import br.com.estudo.custodia.port.out.BrokerProducerPort;
 import br.com.estudo.custodia.port.out.LiquidarHttpClientPort;
@@ -24,18 +24,18 @@ public class Main {
         EventoParcela eventoParcela1 = new EventoParcela(1, LocalDate.now(), new BigDecimal(5));
         EventoParcela eventoParcela2 = new EventoParcela(2, LocalDate.now(), new BigDecimal(5));
         List<EventoParcela> eventoParcelas = List.of(eventoParcela1, eventoParcela2);
-        Liquidacao liquidacao = new Liquidacao("0123", eventoParcelas, BigDecimal.TEN, 0);
+        LiquidacaoCPR liquidacao = new LiquidacaoCPR("0123", eventoParcelas, BigDecimal.TEN, 0);
         Header header = new Header(UUID.randomUUID().toString(), "topico1");
-        EventoLiquidacao evento = new EventoLiquidacao(header, liquidacao);
+        EventoLiquidacaoCPR eventoCPR = new EventoLiquidacaoCPR(header, liquidacao);
 
         // dependências
-        LiquidacaoMapper liquidacaoMapper = new LiquidacaoMapper();
+        LiquidacaoCPRMapper liquidacaoCPRMapper = new LiquidacaoCPRMapper();
         LiquidarHttpClientPort clientPort = new LiquidarRestClientAdapter("http://localhost:8080", "/v1/baixar");
         BrokerProducerPort broker = new ProducerPortKafkaAdapter();
-        LiquidacaoService service = new LiquidacaoUseCase(liquidacaoMapper, clientPort, broker);
-        ConsumerKafkaAdapter consumer = new ConsumerKafkaAdapter(service);
+        LiquidacaoService service = new LiquidacaoUseCase(liquidacaoCPRMapper, clientPort, broker);
+        ConsumerKafkaAdapter consumer = new ConsumerKafkaAdapter(service, liquidacaoCPRMapper);
 
         // consumer
-        consumer.consumir(evento);
+        consumer.consumir(eventoCPR);
     }
 }

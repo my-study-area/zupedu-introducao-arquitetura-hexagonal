@@ -1,4 +1,6 @@
-package br.com.estudo.custodia.adapter.dto.mensageria;
+package br.com.estudo.custodia.core.domain;
+
+import br.com.estudo.custodia.adapter.dto.mensageria.EventoParcela;
 
 import java.math.BigDecimal;
 import java.util.List;
