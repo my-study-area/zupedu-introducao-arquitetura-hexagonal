@@ -4,9 +4,9 @@ import br.com.estudo.custodia.adapter.dto.api.RespostaHttp;
 
 public class EventoRetorno {
     private RespostaHttp retorno;
-    private EventoLiquidacao evento;
+    private Liquidacao evento;
 
-    public EventoRetorno(RespostaHttp retorno, EventoLiquidacao evento) {
+    public EventoRetorno(RespostaHttp retorno, Liquidacao evento) {
         this.retorno = retorno;
         this.evento = evento;
     }
