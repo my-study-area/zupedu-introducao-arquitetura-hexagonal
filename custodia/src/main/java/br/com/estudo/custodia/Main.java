@@ -6,6 +6,7 @@ import br.com.estudo.custodia.adapter.dto.mensageria.EventoParcela;
 import br.com.estudo.custodia.adapter.dto.mensageria.Header;
 import br.com.estudo.custodia.adapter.mapper.LiquidacaoCPRMapper;
 import br.com.estudo.custodia.adapter.mapper.LiquidacaoMapper;
+import br.com.estudo.custodia.adapter.mapper.LiquidacaoMapperFactory;
 import br.com.estudo.custodia.adapter.mapper.LiquidacaoNCEMapper;
 import br.com.estudo.custodia.adapter.in.ConsumerKafkaAdapter;
 import br.com.estudo.custodia.adapter.mapper.LiquidacaoRequestDTOMapper;
@@ -42,8 +43,9 @@ public class Main {
         LiquidacaoMapper liquidacaoNCEMapper = new LiquidacaoNCEMapper();
         LiquidacaoRequestDTOMapper liquidacaoRequestDTOMapper = new LiquidacaoRequestDTOMapper();
         List<LiquidacaoMapper> liquidacoesMapper = List.of(liquidacaoCPRMapper, liquidacaoNCEMapper);
+        LiquidacaoMapperFactory liquidacaoMapperFactory = new LiquidacaoMapperFactory(liquidacoesMapper);
         LiquidacaoService service = new LiquidacaoUseCase(liquidacaoRequestDTOMapper, clientPort, broker);
-        ConsumerKafkaAdapter consumer = new ConsumerKafkaAdapter(service, liquidacoesMapper);
+        ConsumerKafkaAdapter consumer = new ConsumerKafkaAdapter(service, liquidacaoMapperFactory);
 
         // consumer
         consumer.consumir(eventoCPR);
