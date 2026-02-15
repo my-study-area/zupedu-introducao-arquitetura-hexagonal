@@ -7,7 +7,10 @@ import br.com.estudo.custodia.core.domain.LiquidacaoCPR;
 public class LiquidacaoCPRMapper extends LiquidacaoMapper {
     @Override
     public Liquidacao toModel(Object liquidacao) {
-        LiquidacaoCPR liquidacaoCPR = (LiquidacaoCPR) liquidacao;
+        //Pattern Matching para o operador instanceof
+        if (!(liquidacao instanceof LiquidacaoCPR liquidacaoCPR)) {
+            throw new IllegalArgumentException("Deve ser uma Liquidação de CPR");
+        }
         return new Liquidacao(
                 liquidacaoCPR.getNumeroContratoLegado(),
                 liquidacaoCPR.getFluxoEventoParcelas(),
@@ -16,7 +19,7 @@ public class LiquidacaoCPRMapper extends LiquidacaoMapper {
     }
 
     @Override
-    public boolean isValid(EventoBase eventoBase) {
+    public boolean canHandle(EventoBase eventoBase) {
         return eventoBase.getData() instanceof LiquidacaoCPR;
     }
 }

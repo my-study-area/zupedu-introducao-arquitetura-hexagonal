@@ -5,5 +5,5 @@ import br.com.estudo.custodia.core.domain.Liquidacao;
 
 public abstract class LiquidacaoMapper {
     public abstract Liquidacao toModel(Object liquidacao);
-    public abstract boolean isValid(EventoBase eventoBase);
+    public abstract boolean canHandle(EventoBase eventoBase);
 }

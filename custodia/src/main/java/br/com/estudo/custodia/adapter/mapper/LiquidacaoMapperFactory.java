@@ -13,7 +13,7 @@ public class LiquidacaoMapperFactory {
 
     public LiquidacaoMapper build(EventoBase evento) {
       return  mappers.stream()
-              .filter(mapper -> mapper.isValid(evento))
+              .filter(mapper -> mapper.canHandle(evento))
               .findFirst()
               .orElseThrow(() -> new RuntimeException("Mapper de liquidação não encontrado"));
     }

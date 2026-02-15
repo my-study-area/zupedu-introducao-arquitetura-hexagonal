@@ -7,7 +7,10 @@ import br.com.estudo.custodia.core.domain.LiquidacaoNCE;
 public class LiquidacaoNCEMapper extends LiquidacaoMapper {
     @Override
     public Liquidacao toModel(Object liquidacao) {
-        LiquidacaoNCE liquidacaoNCE = (LiquidacaoNCE) liquidacao;
+        //Pattern Matching para o operador instanceof
+        if (!(liquidacao instanceof LiquidacaoNCE liquidacaoNCE)) {
+            throw new IllegalArgumentException("Deve ser uma Liquidação de NCE");
+        }
         return new Liquidacao(
                 liquidacaoNCE.getNumeroOperacaoBoleto(),
                 liquidacaoNCE.getFluxoEventoParcelas(),
@@ -16,7 +19,7 @@ public class LiquidacaoNCEMapper extends LiquidacaoMapper {
     }
 
     @Override
-    public boolean isValid(EventoBase eventoBase) {
+    public boolean canHandle(EventoBase eventoBase) {
         return eventoBase.getData() instanceof LiquidacaoNCE;
     }
 }
