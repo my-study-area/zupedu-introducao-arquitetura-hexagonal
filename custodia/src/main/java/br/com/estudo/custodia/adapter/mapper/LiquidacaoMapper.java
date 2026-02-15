@@ -8,7 +8,7 @@ import br.com.estudo.custodia.core.domain.Liquidacao;
 
 import java.util.List;
 
-public abstract class LiquidacaoMapper<T> {
+public abstract class LiquidacaoMapper {
     public LiquidacaoRequestDTO toRequestDTO(Liquidacao evento) {
         if (evento == null) return null;
 
@@ -35,7 +35,7 @@ public abstract class LiquidacaoMapper<T> {
         );
     }
 
-    public abstract Liquidacao toModel(T liquidacao);
+    public abstract Liquidacao toModel(Object liquidacao);
 
     public abstract boolean isValid(EventoBase eventoBase);
 }

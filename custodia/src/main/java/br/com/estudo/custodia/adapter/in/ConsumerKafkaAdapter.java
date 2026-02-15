@@ -13,9 +13,9 @@ public class ConsumerKafkaAdapter {
     private final Logger logger = LoggerFactory.getLogger(ConsumerKafkaAdapter.class);
 
     private final LiquidacaoService liquidacaoUseCase;
-    private final List<LiquidacaoMapper<?>> liquidacoesMapper;
+    private final List<LiquidacaoMapper> liquidacoesMapper;
 
-    public ConsumerKafkaAdapter(LiquidacaoService liquidacaoUseCase, List<LiquidacaoMapper<?>> liquidacoesMapper) {
+    public ConsumerKafkaAdapter(LiquidacaoService liquidacaoUseCase, List<LiquidacaoMapper> liquidacoesMapper) {
         this.liquidacaoUseCase = liquidacaoUseCase;
         this.liquidacoesMapper = liquidacoesMapper;
     }

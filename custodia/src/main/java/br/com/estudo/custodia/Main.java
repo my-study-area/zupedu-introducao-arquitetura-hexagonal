@@ -37,9 +37,9 @@ public class Main {
         // dependências
         LiquidarHttpClientPort clientPort = new LiquidarRestClientAdapter("http://localhost:8080", "/v1/baixar");
         BrokerProducerPort broker = new ProducerPortKafkaAdapter();
-        LiquidacaoMapper<LiquidacaoCPR> liquidacaoCPRMapper = new LiquidacaoCPRMapper();
-        LiquidacaoMapper<LiquidacaoNCE> liquidacaoNCEMapper = new LiquidacaoNCEMapper();
-        List<LiquidacaoMapper<?>> liquidacoesMapper = List.of(liquidacaoCPRMapper, liquidacaoNCEMapper);
+        LiquidacaoMapper liquidacaoCPRMapper = new LiquidacaoCPRMapper();
+        LiquidacaoMapper liquidacaoNCEMapper = new LiquidacaoNCEMapper();
+        List<LiquidacaoMapper> liquidacoesMapper = List.of(liquidacaoCPRMapper, liquidacaoNCEMapper);
         LiquidacaoService service = new LiquidacaoUseCase(liquidacaoCPRMapper, clientPort, broker);
         ConsumerKafkaAdapter consumer = new ConsumerKafkaAdapter(service, liquidacoesMapper);
 
