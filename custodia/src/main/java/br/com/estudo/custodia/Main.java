@@ -4,19 +4,26 @@ import br.com.estudo.custodia.adapter.dto.mensageria.EventoLiquidacaoCPR;
 import br.com.estudo.custodia.adapter.dto.mensageria.EventoLiquidacaoNCE;
 import br.com.estudo.custodia.adapter.dto.mensageria.EventoParcela;
 import br.com.estudo.custodia.adapter.dto.mensageria.Header;
-import br.com.estudo.custodia.adapter.mapper.CprMapper;
-import br.com.estudo.custodia.adapter.mapper.MapperLiquidacaoDinamico;
-import br.com.estudo.custodia.adapter.mapper.LiquidacaoMapperFactory;
-import br.com.estudo.custodia.adapter.mapper.NceMapper;
 import br.com.estudo.custodia.adapter.in.ConsumerKafkaAdapter;
+import br.com.estudo.custodia.adapter.mapper.CprMapper;
 import br.com.estudo.custodia.adapter.mapper.LiquidacaoMapper;
+import br.com.estudo.custodia.adapter.mapper.LiquidacaoMapperFactory;
+import br.com.estudo.custodia.adapter.mapper.MapperLiquidacaoDinamico;
+import br.com.estudo.custodia.adapter.mapper.NceMapper;
 import br.com.estudo.custodia.adapter.out.LiquidarRestClientAdapter;
-import br.com.estudo.custodia.adapter.out.ProducerKafkaAdapter;
+import br.com.estudo.custodia.adapter.out.ProduceRetornoRetornoKafkaAdapter;
+import br.com.estudo.custodia.adapter.out.ProduceSaidaKafkaAdapter;
 import br.com.estudo.custodia.core.domain.LiquidacaoCPR;
+import br.com.estudo.custodia.core.domain.LiquidacaoModernizadoService;
 import br.com.estudo.custodia.core.domain.LiquidacaoNCE;
 import br.com.estudo.custodia.core.domain.LiquidacaoService;
-import br.com.estudo.custodia.port.out.BrokerProducerPort;
+import br.com.estudo.custodia.port.out.BrokerProduceRetornoPort;
+import br.com.estudo.custodia.port.out.BrokerProduceSaidaPort;
+import br.com.estudo.custodia.port.out.BuscaContratoModernizado;
+import br.com.estudo.custodia.port.out.BuscaContratoModernizadoMemoriaAdapter;
+import br.com.estudo.custodia.port.out.BuscaContratoModernizadoRepository;
 import br.com.estudo.custodia.port.out.LiquidarHttpClientPort;
+import br.com.estudo.custodia.usecase.LiquidacaoModernizadoUseCase;
 import br.com.estudo.custodia.usecase.LiquidacaoUseCase;
 
 import java.math.BigDecimal;
@@ -36,18 +43,26 @@ public class Main {
         EventoLiquidacaoCPR eventoCPR = new EventoLiquidacaoCPR(header, liquidacaoCPR);
         EventoLiquidacaoNCE eventoLiquidacaoNCE = new EventoLiquidacaoNCE(header, liquidacaoNCE);
 
-        // dependências
-        LiquidarHttpClientPort clientPort = new LiquidarRestClientAdapter("http://localhost:8080", "/v1/baixar");
-        BrokerProducerPort broker = new ProducerKafkaAdapter();
+        // Dependências Compartilhada
         MapperLiquidacaoDinamico liquidacaoCPRMapper = new CprMapper();
         MapperLiquidacaoDinamico liquidacaoNCEMapper = new NceMapper();
-        LiquidacaoMapper liquidacaoMapper = new LiquidacaoMapper();
         List<MapperLiquidacaoDinamico> liquidacoesMapper = List.of(liquidacaoCPRMapper, liquidacaoNCEMapper);
         LiquidacaoMapperFactory liquidacaoMapperFactory = new LiquidacaoMapperFactory(liquidacoesMapper);
-        LiquidacaoService service = new LiquidacaoUseCase(liquidacaoMapper, clientPort, broker);
-        ConsumerKafkaAdapter consumer = new ConsumerKafkaAdapter(service, liquidacaoMapperFactory);
+
+        // Dependências Legado
+        LiquidarHttpClientPort clientPort = new LiquidarRestClientAdapter("http://localhost:8080", "/v1/baixar");
+        BrokerProduceRetornoPort brokerRetorno = new ProduceRetornoRetornoKafkaAdapter();
+        LiquidacaoMapper liquidacaoMapper = new LiquidacaoMapper();
+        LiquidacaoService serviceLiquidacaoLegado = new LiquidacaoUseCase(liquidacaoMapper, clientPort, brokerRetorno);
+
+        // Dependências Modernizado
+        BuscaContratoModernizadoRepository repository = new BuscaContratoModernizadoRepository();
+        BuscaContratoModernizado buscaContratoModernizado = new BuscaContratoModernizadoMemoriaAdapter(repository);
+        BrokerProduceSaidaPort brokerSaida = new ProduceSaidaKafkaAdapter();
+        LiquidacaoModernizadoService serviceLiquidacaoModernizado = new LiquidacaoModernizadoUseCase(buscaContratoModernizado, brokerSaida);
 
         // consumer
+        ConsumerKafkaAdapter consumer = new ConsumerKafkaAdapter(serviceLiquidacaoLegado, serviceLiquidacaoModernizado,liquidacaoMapperFactory);
         consumer.consumir(eventoCPR);
         consumer.consumir(eventoLiquidacaoNCE);
     }

@@ -22,7 +22,7 @@ public class LiquidarRestClientAdapter implements LiquidarHttpClientPort {
 
     @Override
     public RespostaHttp post(Object body) {
-        logger.info("Inicia a requisição HTTP para liquidação");
+        logger.info("Iniciando a requisição HTTP para liquidação");
         LiquidacaoRequestDTO request = (LiquidacaoRequestDTO) body;
         ResponseEntity<LiquidacaoResponseDTO> responseEntity = client.post()
                 .uri(uri)
