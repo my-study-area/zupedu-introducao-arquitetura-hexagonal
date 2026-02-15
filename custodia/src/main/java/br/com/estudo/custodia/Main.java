@@ -8,6 +8,7 @@ import br.com.estudo.custodia.adapter.mapper.LiquidacaoCPRMapper;
 import br.com.estudo.custodia.adapter.mapper.LiquidacaoMapper;
 import br.com.estudo.custodia.adapter.mapper.LiquidacaoNCEMapper;
 import br.com.estudo.custodia.adapter.in.ConsumerKafkaAdapter;
+import br.com.estudo.custodia.adapter.mapper.LiquidacaoRequestDTOMapper;
 import br.com.estudo.custodia.adapter.out.LiquidarRestClientAdapter;
 import br.com.estudo.custodia.adapter.out.ProducerPortKafkaAdapter;
 import br.com.estudo.custodia.core.domain.LiquidacaoCPR;
@@ -39,8 +40,9 @@ public class Main {
         BrokerProducerPort broker = new ProducerPortKafkaAdapter();
         LiquidacaoMapper liquidacaoCPRMapper = new LiquidacaoCPRMapper();
         LiquidacaoMapper liquidacaoNCEMapper = new LiquidacaoNCEMapper();
+        LiquidacaoRequestDTOMapper liquidacaoRequestDTOMapper = new LiquidacaoRequestDTOMapper();
         List<LiquidacaoMapper> liquidacoesMapper = List.of(liquidacaoCPRMapper, liquidacaoNCEMapper);
-        LiquidacaoService service = new LiquidacaoUseCase(liquidacaoCPRMapper, clientPort, broker);
+        LiquidacaoService service = new LiquidacaoUseCase(liquidacaoRequestDTOMapper, clientPort, broker);
         ConsumerKafkaAdapter consumer = new ConsumerKafkaAdapter(service, liquidacoesMapper);
 
         // consumer
