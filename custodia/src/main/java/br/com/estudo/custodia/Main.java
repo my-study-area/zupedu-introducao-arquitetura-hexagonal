@@ -11,7 +11,7 @@ import br.com.estudo.custodia.adapter.mapper.NceMapper;
 import br.com.estudo.custodia.adapter.in.ConsumerKafkaAdapter;
 import br.com.estudo.custodia.adapter.mapper.LiquidacaoMapper;
 import br.com.estudo.custodia.adapter.out.LiquidarRestClientAdapter;
-import br.com.estudo.custodia.adapter.out.ProducerPortKafkaAdapter;
+import br.com.estudo.custodia.adapter.out.ProducerKafkaAdapter;
 import br.com.estudo.custodia.core.domain.LiquidacaoCPR;
 import br.com.estudo.custodia.core.domain.LiquidacaoNCE;
 import br.com.estudo.custodia.core.domain.LiquidacaoService;
@@ -38,7 +38,7 @@ public class Main {
 
         // dependências
         LiquidarHttpClientPort clientPort = new LiquidarRestClientAdapter("http://localhost:8080", "/v1/baixar");
-        BrokerProducerPort broker = new ProducerPortKafkaAdapter();
+        BrokerProducerPort broker = new ProducerKafkaAdapter();
         MapperLiquidacaoDinamico liquidacaoCPRMapper = new CprMapper();
         MapperLiquidacaoDinamico liquidacaoNCEMapper = new NceMapper();
         LiquidacaoMapper liquidacaoMapper = new LiquidacaoMapper();
