@@ -4,7 +4,7 @@ import br.com.estudo.custodia.adapter.dto.mensageria.EventoBase;
 import br.com.estudo.custodia.core.domain.Liquidacao;
 import br.com.estudo.custodia.core.domain.LiquidacaoNCE;
 
-public class LiquidacaoNCEMapper extends LiquidacaoMapper {
+public class NceMapper implements MapperLiquidacaoDinamico {
     @Override
     public Liquidacao toModel(Object liquidacao) {
         //Pattern Matching para o operador instanceof

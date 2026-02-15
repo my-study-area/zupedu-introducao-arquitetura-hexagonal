@@ -1,7 +1,7 @@
 package br.com.estudo.custodia.adapter.in;
 
 import br.com.estudo.custodia.adapter.dto.mensageria.EventoBase;
-import br.com.estudo.custodia.adapter.mapper.LiquidacaoMapper;
+import br.com.estudo.custodia.adapter.mapper.MapperLiquidacaoDinamico;
 import br.com.estudo.custodia.adapter.mapper.LiquidacaoMapperFactory;
 import br.com.estudo.custodia.core.domain.Liquidacao;
 import br.com.estudo.custodia.core.domain.LiquidacaoService;
@@ -21,7 +21,7 @@ public class ConsumerKafkaAdapter {
     public void consumir(EventoBase evento) {
         try {
             logger.info("Consumindo evento: {}", evento);
-            LiquidacaoMapper mapper = liquidacaoMapperFactory.build(evento);
+            MapperLiquidacaoDinamico mapper = liquidacaoMapperFactory.build(evento);
             Liquidacao liquidacao = mapper.toModel(evento.getData());
             liquidacaoUseCase.liquidar(liquidacao);
         } catch (Exception e) {

@@ -5,13 +5,13 @@ import br.com.estudo.custodia.adapter.dto.mensageria.EventoBase;
 import java.util.List;
 
 public class LiquidacaoMapperFactory {
-    private final List<LiquidacaoMapper> mappers;
+    private final List<MapperLiquidacaoDinamico> mappers;
 
-    public LiquidacaoMapperFactory(List<LiquidacaoMapper> mappers) {
+    public LiquidacaoMapperFactory(List<MapperLiquidacaoDinamico> mappers) {
         this.mappers = mappers;
     }
 
-    public LiquidacaoMapper build(EventoBase evento) {
+    public MapperLiquidacaoDinamico build(EventoBase evento) {
       return  mappers.stream()
               .filter(mapper -> mapper.canHandle(evento))
               .findFirst()

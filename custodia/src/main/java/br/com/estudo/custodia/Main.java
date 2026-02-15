@@ -4,12 +4,12 @@ import br.com.estudo.custodia.adapter.dto.mensageria.EventoLiquidacaoCPR;
 import br.com.estudo.custodia.adapter.dto.mensageria.EventoLiquidacaoNCE;
 import br.com.estudo.custodia.adapter.dto.mensageria.EventoParcela;
 import br.com.estudo.custodia.adapter.dto.mensageria.Header;
-import br.com.estudo.custodia.adapter.mapper.LiquidacaoCPRMapper;
-import br.com.estudo.custodia.adapter.mapper.LiquidacaoMapper;
+import br.com.estudo.custodia.adapter.mapper.CprMapper;
+import br.com.estudo.custodia.adapter.mapper.MapperLiquidacaoDinamico;
 import br.com.estudo.custodia.adapter.mapper.LiquidacaoMapperFactory;
-import br.com.estudo.custodia.adapter.mapper.LiquidacaoNCEMapper;
+import br.com.estudo.custodia.adapter.mapper.NceMapper;
 import br.com.estudo.custodia.adapter.in.ConsumerKafkaAdapter;
-import br.com.estudo.custodia.adapter.mapper.LiquidacaoRequestDTOMapper;
+import br.com.estudo.custodia.adapter.mapper.LiquidacaoMapper;
 import br.com.estudo.custodia.adapter.out.LiquidarRestClientAdapter;
 import br.com.estudo.custodia.adapter.out.ProducerPortKafkaAdapter;
 import br.com.estudo.custodia.core.domain.LiquidacaoCPR;
@@ -39,12 +39,12 @@ public class Main {
         // dependências
         LiquidarHttpClientPort clientPort = new LiquidarRestClientAdapter("http://localhost:8080", "/v1/baixar");
         BrokerProducerPort broker = new ProducerPortKafkaAdapter();
-        LiquidacaoMapper liquidacaoCPRMapper = new LiquidacaoCPRMapper();
-        LiquidacaoMapper liquidacaoNCEMapper = new LiquidacaoNCEMapper();
-        LiquidacaoRequestDTOMapper liquidacaoRequestDTOMapper = new LiquidacaoRequestDTOMapper();
-        List<LiquidacaoMapper> liquidacoesMapper = List.of(liquidacaoCPRMapper, liquidacaoNCEMapper);
+        MapperLiquidacaoDinamico liquidacaoCPRMapper = new CprMapper();
+        MapperLiquidacaoDinamico liquidacaoNCEMapper = new NceMapper();
+        LiquidacaoMapper liquidacaoMapper = new LiquidacaoMapper();
+        List<MapperLiquidacaoDinamico> liquidacoesMapper = List.of(liquidacaoCPRMapper, liquidacaoNCEMapper);
         LiquidacaoMapperFactory liquidacaoMapperFactory = new LiquidacaoMapperFactory(liquidacoesMapper);
-        LiquidacaoService service = new LiquidacaoUseCase(liquidacaoRequestDTOMapper, clientPort, broker);
+        LiquidacaoService service = new LiquidacaoUseCase(liquidacaoMapper, clientPort, broker);
         ConsumerKafkaAdapter consumer = new ConsumerKafkaAdapter(service, liquidacaoMapperFactory);
 
         // consumer

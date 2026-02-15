@@ -4,8 +4,7 @@ import br.com.estudo.custodia.adapter.dto.mensageria.EventoBase;
 import br.com.estudo.custodia.core.domain.Liquidacao;
 import br.com.estudo.custodia.core.domain.LiquidacaoCPR;
 
-public class LiquidacaoCPRMapper extends LiquidacaoMapper {
-    @Override
+public class CprMapper implements MapperLiquidacaoDinamico {
     public Liquidacao toModel(Object liquidacao) {
         //Pattern Matching para o operador instanceof
         if (!(liquidacao instanceof LiquidacaoCPR liquidacaoCPR)) {
@@ -18,7 +17,6 @@ public class LiquidacaoCPRMapper extends LiquidacaoMapper {
                 liquidacaoCPR.getMotivoBaixa());
     }
 
-    @Override
     public boolean canHandle(EventoBase eventoBase) {
         return eventoBase.getData() instanceof LiquidacaoCPR;
     }
